@@ -1,6 +1,17 @@
 <template>
   <a href="https://www.wrencode.com">
-    <img alt="Wrencode Logo" src="./assets/images/logo/sm-fg_hx-brdr_sq.png" />
+    <picture>
+      <source
+        srcset="./assets/images/logo/wrencode-logo-vector-color-ffffff.svg"
+        media="(prefers-color-scheme: dark)"
+      />
+      <img
+        src="./assets/images/logo/wrencode-logo-vector-color-4a4139.svg"
+        alt="Wrencode Logo"
+        width="500"
+        height="500"
+      />
+    </picture>
   </a>
   <Home msg="Welcome to the future home of Wrencode, LLC!" />
 </template>
@@ -28,12 +39,49 @@ export default {
   font-style: normal;
 }
 
-#app {
-  font-family: "Source Code Pro", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #4a4139;
-  margin-top: 60px;
+@media (prefers-color-scheme: dark) {
+  /* dark mode css */
+  body,
+  html {
+    background: #4a4139;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  /*noinspection ALL*/
+  #app {
+    font-family: "Source Code Pro", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #ffffff;
+    background: #4a4139;
+    margin-top: 60px;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  /* light mode css */
+  body,
+  html {
+    background: #ffffff;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  /*noinspection ALL*/
+  #app {
+    font-family: "Source Code Pro", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #4a4139;
+    background: #ffffff;
+    margin-top: 60px;
+  }
 }
 </style>
