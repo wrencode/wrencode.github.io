@@ -8,8 +8,8 @@
       <img
         src="./assets/images/logo/wrencode-logo-vector-color-4a4139.svg"
         alt="Wrencode Logo"
-        width="500"
-        height="500"
+        width="400"
+        height="400"
       />
     </picture>
   </a>
