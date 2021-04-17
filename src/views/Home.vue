@@ -1,6 +1,21 @@
 <template>
   <div class="home">
     <h1>{{ msg }}</h1>
+    <a href="https://www.wrencode.com">
+      <picture>
+        <source
+          srcset="../assets/images/logo/wrencode-logo-vector-color-ffffff.svg"
+          media="(prefers-color-scheme: dark)"
+        />
+        <img
+          class="wrencode-logo"
+          src="../assets/images/logo/wrencode-logo-vector-color-4a4139.svg"
+          alt="Wrencode Logo"
+          width="400"
+          height="400"
+        />
+      </picture>
+    </a>
     <p>
       Wrencode, LLC focuses on the implementation and optimization of modern
       technology to help you soar to new heights!
@@ -145,16 +160,29 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
   color: #4a4139;
   margin: 5px;
+}
+
+img:not(.wrencode-logo) {
+  transition: transform 0.2s; /* Animation */
+}
+
+img:hover:not(.wrencode-logo) {
+  transform: scale(
+    1.25
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 </style>

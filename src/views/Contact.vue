@@ -1,0 +1,14 @@
+<template>
+  <h1>Coming soon!</h1>
+</template>
+
+<script>
+export default {
+  name: "Contact",
+  props: {
+    msg: String,
+  },
+};
+</script>
+
+<style scoped></style>
