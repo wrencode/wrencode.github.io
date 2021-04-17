@@ -186,13 +186,13 @@ html {
 
   .p-tabmenuitem:not(.p-highlight) {
     background: #4a4139 !important;
-    color: rgba(255, 255, 255, 60) !important;
+    color: #eeeeee !important;
   }
 
   .p-menuitem-icon,
   .p-menuitem-text,
   .p-submenu-icon {
-    color: rgba(255, 255, 255, 60) !important;
+    color: #eeeeee !important;
   }
 
   .p-tabmenuitem.p-highlight .p-menuitem-text,
