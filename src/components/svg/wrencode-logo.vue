@@ -13,10 +13,10 @@
   <!--    />-->
   <!--  </picture>-->
   <svg
-    width="100%"
-    height="100%"
     class="wrencode-logo"
     viewBox="0 0 5000 4096"
+    width="100%"
+    height="100%"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
