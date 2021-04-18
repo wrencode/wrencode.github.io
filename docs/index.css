@@ -1,0 +1,10 @@
+html {
+  background-color: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* dark mode css */
+  html {
+    background-color: #4a4139;
+  }
+}
