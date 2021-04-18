@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <h1>{{ msg }}</h1>
-    <div style="height: 75px" />
     <a href="https://www.wrencode.com">
       <WrencodeLogo />
     </a>
