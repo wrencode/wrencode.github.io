@@ -4,6 +4,7 @@ import About from "@/views/About.vue";
 import Services from "@/views/Services.vue";
 import Clients from "@/views/Clients.vue";
 import Contact from "@/views/Contact.vue";
+import PageNotFound from "@/views/PageNotFound.vue";
 
 const routes = [
   {
@@ -39,6 +40,10 @@ const routes = [
     path: "/contact",
     name: "Contact",
     component: Contact,
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    component: PageNotFound,
   },
 ];
 
