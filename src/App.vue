@@ -180,7 +180,7 @@ html {
   background: #aba18c !important;
   position: absolute !important;
   top: 0;
-  width: 25%;
+  width: 50%;
   border: 0 !important;
   display: flex;
   /*justify-content: space-around;*/
