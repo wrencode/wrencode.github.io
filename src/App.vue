@@ -1,21 +1,88 @@
 <template>
   <div id="app">
     <Menubar :model="items" />
-    <!--    <TabMenu :model="items" />-->
     <br />
     <router-view />
-    <!--    <Home msg="Welcome to the future home of Wrencode, LLC!" />-->
+    <br />
+    <Button
+      label="Back to Top"
+      id="back-to-top-button"
+      class="p-button-icon-only p-button-rounded p-button-outlined hide-button"
+      @click="onClick"
+      v-tooltip.top="'Back to Top'"
+    >
+      <i class="pi pi-arrow-up"></i>
+    </Button>
   </div>
 </template>
 
 <script>
 import Menubar from "primevue/menubar";
-// import TabMenu from "primevue/tabmenu";
+import Button from "primevue/button";
 
 export default {
   name: "App",
   components: {
     Menubar,
+    Button,
+  },
+  created() {
+    window.addEventListener("scroll", this.onScroll);
+  },
+  unmounted() {
+    window.removeEventListener("scroll", this.onScroll);
+  },
+  methods: {
+    onClick() {
+      // let rootElement = document.documentElement;
+
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+
+      // rootElement.scrollTo({
+      //   top: 0,
+      //   behavior: "smooth",
+      // });
+    },
+    onScroll() {
+      let rootElement = document.documentElement;
+      let backToTopButton = document.getElementById("back-to-top-button");
+
+      // console.log("scroll height:", rootElement.scrollHeight)
+      // console.log("client height:", rootElement.clientHeight)
+      // console.log("scroll top:", rootElement.scrollTop)
+
+      if (rootElement.scrollHeight > rootElement.clientHeight + 100) {
+        backToTopButton.classList.remove("hide-button");
+        backToTopButton.classList.add("show-button");
+      } else {
+        backToTopButton.classList.remove("show-button");
+        backToTopButton.classList.add("hide-button");
+      }
+    },
+    onMenubarItemClick(menubarItemName) {
+      this.hideBackToTopButton();
+      this.makeMenubarItemActive(menubarItemName);
+    },
+    hideBackToTopButton() {
+      let backToTopButton = document.getElementById("back-to-top-button");
+      backToTopButton.classList.remove("show-button");
+      backToTopButton.classList.add("hide-button");
+    },
+    makeMenubarItemActive(menubarItemName) {
+      let menubarItems = document.getElementsByClassName("menubar-item");
+      for (let menubarItem of menubarItems) {
+        menubarItem.classList.remove("menubar-item-active");
+      }
+
+      let selectedMenubarItem = document
+        .getElementsByClassName(`menubar-item-${menubarItemName}`)
+        .item(0);
+      selectedMenubarItem.classList.add("menubar-item-active");
+    },
   },
   data() {
     return {
@@ -24,26 +91,36 @@ export default {
           label: "Home",
           icon: "pi pi-fw pi-home",
           to: "/",
+          command: this.onMenubarItemClick.bind(this, "home"),
+          class: "menubar-item menubar-item-home",
         },
         {
           label: "About",
           icon: "pi pi-fw pi-info-circle",
           to: "/about",
+          command: this.onMenubarItemClick.bind(this, "about"),
+          class: "menubar-item menubar-item-about",
         },
         {
           label: "Services",
           icon: "pi pi-fw pi-user-edit",
           to: "/services",
+          command: this.onMenubarItemClick.bind(this, "services"),
+          class: "menubar-item menubar-item-services",
         },
         {
           label: "Clients",
           icon: "pi pi-fw pi-globe",
           to: "/clients",
+          command: this.onMenubarItemClick.bind(this, "clients"),
+          class: "menubar-item menubar-item-clients",
         },
         {
           label: "Contact",
           icon: "pi pi-fw pi-envelope",
           to: "/contact",
+          command: this.onMenubarItemClick.bind(this, "contact"),
+          class: "menubar-item menubar-item-contact",
         },
       ],
     };
@@ -63,10 +140,13 @@ export default {
   font-style: normal;
 }
 
-/* light mode css */
+root {
+  font-family: "Source Code Pro", Roboto, sans-serif;
+}
+
 body,
 html {
-  background: #ffffff;
+  background: #aba18c; /* cactus wren */
   padding: 0;
   margin: 0;
   width: 100%;
@@ -75,119 +155,68 @@ html {
 
 #app {
   color: #4a4139;
-  background: #ffffff;
-  font-family: "Source Code Pro", sans-serif;
+  font-weight: 600;
+  font-size: 14pt;
+  background: #aba18c;
+  font-family: "Source Code Pro", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 50px 10px;
   text-align: center;
-  margin-top: 60px;
 }
 
-/*.p-tabmenu {*/
-/*  position: absolute;*/
-/*  top: 0;*/
-/*  width: 100%;*/
-/*  border: 0 !important;*/
-/*  !*background: white !important;*!*/
-/*  display: flex;*/
-/*  justify-content: space-around;*/
-/*}*/
-
-/*.p-tabmenu-nav {*/
-/*  width: 100% !important;*/
-/*  border: 0 !important;*/
-/*  display: flex;*/
-/*  justify-content: space-around;*/
-/*}*/
-
-/*.p-tabmenuitem {*/
-/*  display: inline-flex !important;*/
-/*  !*border-radius: 0 0 10px 10px !important;*!*/
-/*  border-radius: 0 0 0 0 !important;*/
-/*  !*background: transparent !important;*!*/
-/*}*/
-
-/*.p-highlight {*/
-/*  transition: none !important;*/
-/*}*/
-
-/*.p-tabmenuitem.p-highlight .p-menuitem-text,*/
-/*.p-tabmenuitem.p-highlight .p-menuitem-icon {*/
-/*  color: saddlebrown !important;*/
-/*}*/
-
-/*.p-tabmenuitem:not(.p-highlight):hover .p-menuitem-text,*/
-/*.p-tabmenuitem:not(.p-highlight):hover .p-menuitem-icon {*/
-/*  color: saddlebrown !important;*/
-/*}*/
-
-/*.p-tabmenu .p-tabmenu-nav li .p-menuitem-link {*/
-/*  transition: background-color 0.2s;*/
-/*  border-radius: 0;*/
-/*}*/
-/*.p-tabmenu .p-tabmenu-nav li .p-menuitem-link > .p-ink {*/
-/*  background-color: rgba(206, 147, 216, 0.16);*/
-/*}*/
-/*.p-tabmenu .p-tabmenu-nav li .p-menuitem-link:focus {*/
-/*  background-color: rgba(206, 147, 216, 0.12);*/
-/*}*/
-/*.p-tabmenu .p-tabmenu-nav .p-tabmenu-ink-bar {*/
-/*  display: block;*/
-/*  position: absolute;*/
-/*  bottom: 0;*/
-/*  height: 4px !important;*/
-/*  background-color: saddlebrown !important;*/
-/*  transition: 500ms cubic-bezier(0.35, 0, 0.25, 1);*/
-/*}*/
-
 .p-menubar:not(.p-menubar-mobile-active) {
-  background: #ffffff !important;
+  background: #aba18c !important;
   position: absolute;
   top: 0;
-  width: 100%;
+  width: 25%;
   border: 0 !important;
   display: flex;
-  justify-content: space-around;
+  /*justify-content: space-around;*/
 }
 
 .p-menubar-mobile-active {
-  background: #ffffff !important;
+  background: #aba18c !important;
   position: absolute !important;
   top: 0;
-  width: 100%;
+  width: 25%;
   border: 0 !important;
   display: flex;
-  justify-content: space-around;
+  /*justify-content: space-around;*/
 }
 
 .p-menubar-root-list {
-  background: #ffffff !important;
+  background: #aba18c !important;
   width: 100% !important;
   border: 0 !important;
   display: inline-flex;
-  justify-content: space-around;
+  /*justify-content: space-around;*/
 }
 
 .p-menubar-button {
   color: #4a4139 !important;
 }
 
+.p-menubar-button:focus {
+  box-shadow: none !important;
+}
+
 .p-menubar-button:hover {
-  color: saddlebrown !important;
-  background: transparent !important;
+  color: #7e3227 !important; /* red hawk */
+  background: #aba18c !important;
   transition: 0.5s !important;
   transform: scale(1.25);
 }
 
 .p-menuitem {
-  background: #ffffff;
+  background: transparent !important;
   color: #4a4139 !important;
 }
 
 .p-menuitem:after {
   display: block;
   content: "";
-  border-bottom: solid 3px saddlebrown;
+  border-bottom: solid 3px #7e3227;
   transform: scaleX(0);
   transition: transform 0.25s ease-in-out;
 }
@@ -210,9 +239,79 @@ html {
 .p-menuitem:hover .p-menuitem-icon,
 .p-menuitem:hover .p-menuitem-text,
 .p-menuitem:hover .p-submenu-icon {
-  color: saddlebrown !important;
+  color: #7e3227 !important;
   transition: 0.5s !important;
   transform: scale(1.15);
+}
+
+.menubar-item-active .p-menuitem-icon,
+.menubar-item-active .p-menuitem-text,
+.menubar-item-active .p-submenu-icon {
+  color: #7e3227 !important;
+}
+
+.p-grid {
+  text-align: center;
+}
+
+.p-fieldset {
+  font-family: "Source Code Pro", Roboto, sans-serif;
+  /*background: #4a4139 !important; !* wren *!*/
+  background: rgba(74, 65, 57, 0.75) !important; /* wren */
+  display: flex; /* full width of page */
+  /*display: inline-block; !* only width of contents *!*/
+  justify-content: space-around;
+  text-align: left;
+  color: #4a4139;
+  border: none !important;
+  border-radius: 5px !important;
+}
+
+.p-fieldset-legend {
+  background: #4a4139 !important;
+  color: #aba18c !important;
+  border-radius: 5px !important;
+  border: none !important;
+}
+
+.p-card {
+  font-family: "Source Code Pro", Roboto, sans-serif !important;
+  background: #aba18c !important; /* cactus wren */
+  color: #4a4139 !important;
+  border-radius: 5px !important;
+}
+
+.p-card-subtitle {
+  color: rgba(74, 65, 57, 0.5) !important; /* wren */
+}
+
+#back-to-top-button {
+  background: #aba18c;
+  color: #4a4139;
+  border-color: #4a4139;
+}
+
+#back-to-top-button:hover {
+  background: #7e3227;
+  color: #aba18c;
+  border-color: #7e3227;
+}
+
+.hide-button {
+  display: none !important;
+}
+
+.show-button {
+  display: inline-flex !important;
+}
+
+.p-tooltip.p-tooltip-top .p-tooltip-arrow {
+  border-top-color: rgba(256, 256, 256, 0.75) !important;
+}
+
+.p-tooltip-text {
+  color: #4a4139 !important;
+  background: rgba(256, 256, 256, 0.75) !important;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -220,41 +319,12 @@ html {
   body,
   html {
     background: #4a4139;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    min-height: 100%;
   }
 
   #app {
-    color: #eeeeee;
-    background: #4a4139;
+    color: #aba18c;
+    background: #4a4139; /* wren */
   }
-
-  /*.p-tabmenuitem:not(.p-highlight) {*/
-  /*  background: #4a4139 !important;*/
-  /*  color: #eeeeee !important;*/
-  /*}*/
-
-  /*.p-tabmenuitem.p-highlight .p-menuitem-text,*/
-  /*.p-tabmenuitem.p-highlight .p-menuitem-icon {*/
-  /*  color: lightsalmon !important;*/
-  /*}*/
-
-  /*.p-tabmenuitem:not(.p-highlight):hover .p-menuitem-text,*/
-  /*.p-tabmenuitem:not(.p-highlight):hover .p-menuitem-icon {*/
-  /*  color: lightsalmon !important;*/
-  /*  transition: 0.5s !important;*/
-  /*}*/
-
-  /*.p-tabmenu .p-tabmenu-nav .p-tabmenu-ink-bar {*/
-  /*  display: block;*/
-  /*  position: absolute;*/
-  /*  bottom: 0;*/
-  /*  height: 2px;*/
-  /*  background-color: lightsalmon !important;*/
-  /*  transition: 500ms cubic-bezier(0.35, 0, 0.25, 1);*/
-  /*}*/
 
   .p-menubar:not(.p-menubar-mobile-active) {
     background: #4a4139 !important;
@@ -269,32 +339,79 @@ html {
   }
 
   .p-menubar-button {
-    color: #eeeeee !important;
+    color: #aba18c !important;
   }
 
   .p-menubar-button:hover {
-    color: lightsalmon !important;
+    color: #f09651 !important; /* toucan */
   }
 
   .p-menuitem {
     background: #4a4139;
-    color: #eeeeee !important;
+    color: #aba18c !important;
   }
 
   .p-menuitem:after {
-    border-bottom: solid 3px lightsalmon;
+    border-bottom: solid 3px #f09651;
   }
 
   .p-menuitem-icon,
   .p-menuitem-text,
   .p-submenu-icon {
-    color: #eeeeee !important;
+    color: #aba18c !important;
   }
 
   .p-menuitem:hover .p-menuitem-icon,
   .p-menuitem:hover .p-menuitem-text,
   .p-menuitem:hover .p-submenu-icon {
-    color: lightsalmon !important;
+    color: #f09651 !important;
+  }
+
+  .menubar-item-active .p-menuitem-icon,
+  .menubar-item-active .p-menuitem-text,
+  .menubar-item-active .p-submenu-icon {
+    color: #f09651 !important;
+  }
+
+  .p-fieldset {
+    /*background: #aba18c; !* cactus wren *!*/
+    background: rgba(171, 161, 140, 0.75) !important;
+    color: #aba18c;
+  }
+
+  .p-fieldset-legend {
+    background: #aba18c !important;
+    color: #4a4139 !important;
+  }
+
+  .p-card {
+    background: #4a4139 !important;
+    color: #aba18c !important;
+  }
+
+  .p-card-subtitle {
+    color: rgba(171, 161, 140, 0.5) !important; /* wren */
+  }
+
+  #back-to-top-button {
+    background: #4a4139;
+    color: #aba18c;
+    border-color: #aba18c;
+  }
+
+  #back-to-top-button:hover {
+    background: #f09651;
+    color: #4a4139;
+    border-color: #f09651;
+  }
+
+  .p-tooltip.p-tooltip-top .p-tooltip-arrow {
+    border-top-color: rgba(0, 0, 0, 0.75) !important;
+  }
+
+  .p-tooltip-text {
+    color: #aba18c !important;
+    background: rgba(0, 0, 0, 0.75) !important;
   }
 }
 </style>

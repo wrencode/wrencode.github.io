@@ -230,7 +230,7 @@ svg {
 }
 
 svg:hover {
-  fill: saddlebrown;
+  fill: #7e3227;
   transform: scale(
     1.25
   ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
@@ -244,11 +244,11 @@ svg:hover {
 
 @media (prefers-color-scheme: dark) {
   svg {
-    fill: #eeeeee;
+    fill: #aba18c;
   }
 
   svg:hover path {
-    fill: lightsalmon;
+    fill: #f09651;
   }
 }
 </style>

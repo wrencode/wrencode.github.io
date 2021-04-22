@@ -51,17 +51,17 @@ export default {
   min-width: 250px;
 }
 
-.wrencode-logo:hover {
-  fill: saddlebrown;
-}
+/*.wrencode-logo:hover {*/
+/*  fill: saddlebrown;*/
+/*}*/
 
 @media (prefers-color-scheme: dark) {
   .wrencode-logo {
-    fill: #eeeeee;
+    fill: #aba18c;
   }
 
-  .wrencode-logo:hover {
-    fill: lightsalmon;
-  }
+  /*.wrencode-logo:hover {*/
+  /*  fill: lightsalmon;*/
+  /*}*/
 }
 </style>
