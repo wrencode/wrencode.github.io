@@ -108,6 +108,7 @@ export default {
 };
 </script>
 
+<!--suppress CssUnusedSymbol -->
 <style>
 .chart-container {
   position: relative;

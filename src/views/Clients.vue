@@ -55,6 +55,7 @@ export default {
 };
 </script>
 
+<!--suppress CssUnusedSymbol -->
 <style scoped>
 .p-grid {
   text-align: center;

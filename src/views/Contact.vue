@@ -135,6 +135,7 @@ export default {
 };
 </script>
 
+<!--suppress CssUnusedSymbol -->
 <style scoped>
 .p-fieldset {
   /*display: flex; !* full width of page *!*/

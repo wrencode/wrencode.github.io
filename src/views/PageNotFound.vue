@@ -1,3 +1,4 @@
+<!--suppress HtmlUnknownTarget -->
 <template>
   <div class="page-not-found">
     <h1>Oops... 404!</h1>

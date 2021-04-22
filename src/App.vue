@@ -128,6 +128,7 @@ export default {
 };
 </script>
 
+<!--suppress CssUnusedSymbol -->
 <style>
 /*@import url('https://fonts.googleapis.com/css?family=Source%20Code%20Pro');*/
 
@@ -190,7 +191,6 @@ html {
   width: 100% !important;
   border: 0 !important;
   display: inline-flex;
-  /*justify-content: space-around;*/
 }
 
 .p-menubar-button {

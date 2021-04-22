@@ -1,3 +1,4 @@
+<!--suppress HtmlUnknownTarget -->
 <template>
   <div class="p-grid">
     <div class="p-col">
@@ -98,6 +99,7 @@ export default {
 };
 </script>
 
+<!--suppress CssUnusedSymbol -->
 <style>
 .p-accordion {
   background: #aba18c !important;
