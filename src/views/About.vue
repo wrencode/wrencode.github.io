@@ -8,7 +8,7 @@
             <i class="pi pi-globe">&nbsp;</i>
             <span>History</span>
           </template>
-          <p style="text-indent: 1em">
+          <p>
             Wrencode, LLC was founded in March of 2021 by Wren Rudolph to
             support his side job as an independent technical consultant. In this
             capacity he provides software engineering services, machine learning
@@ -16,7 +16,7 @@
             of best practices for software documentation, hiring, team-building,
             and agile software development.
           </p>
-          <p style="text-indent: 1em">
+          <p>
             Wren is a software engineer by trade, with many years of experience
             in the tech government contracting space building applications for
             the intelligence community. Wren completed his undergraduate studies
@@ -34,7 +34,7 @@
             <i class="pi pi-compass">&nbsp;</i>
             <span>Roadmap</span>
           </template>
-          <p style="text-indent: 1em">
+          <p>
             Wrencode, LLC is a privately-owned, single-member LLC. At the
             present time the company exists exclusively to provide technical
             consulting services, and as such there are currently no expected

@@ -13,7 +13,7 @@
           <template #title> Wren Rudolph </template>
           <template #subtitle> Technical Consultant & Founder </template>
           <template #content>
-            <p style="text-indent: 2em">
+            <p>
               <i>
                 I like to take things apart and put them back together! I love
                 language and logic, and am excited by challenges that force me
