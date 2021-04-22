@@ -5,7 +5,9 @@
         <template #legend> Clients </template>
         <Card class="client-card">
           <template #title>
-            <a :href="client_1">Strive Digital</a>
+            <a :href="client_1" target="_blank" rel="noopener"
+              >Strive Digital</a
+            >
           </template>
           <template #content>
             <div class="container">

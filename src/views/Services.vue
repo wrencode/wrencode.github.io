@@ -56,7 +56,7 @@ export default {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         hoverMode: "index",
         stacked: false,
         cutoutPercentage: "25",
@@ -108,10 +108,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .chart-container {
   position: relative;
   width: 100%;
   height: 1000px;
+}
+
+.p-chart {
+  height: 100vh;
 }
 </style>
