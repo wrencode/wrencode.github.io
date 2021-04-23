@@ -1,8 +1,13 @@
-<!--suppress XmlUnusedNamespaceDeclaration -->
+<!--suppress XmlUnusedNamespaceDeclaration, HtmlUnknownAttribute -->
 <template>
   <ul>
     <li>
-      <a href="https://github.com/wrencode" target="_blank" rel="noopener">
+      <a
+        href="https://github.com/wrencode"
+        target="_blank"
+        rel="noopener"
+        v-tooltip.bottom="'Wrencode on GitHub'"
+      >
         <svg
           class="social-media-icon"
           id="github-square"
@@ -30,6 +35,7 @@
         href="https://www.linkedin.com/company/wrencode"
         target="_blank"
         rel="noopener"
+        v-tooltip.bottom="'Wrencode on LinkedIn'"
       >
         <svg
           class="social-media-icon"
@@ -54,7 +60,12 @@
           Wrencode on LinkedIn
         </svg>
       </a>
-      <a href="https://twitter.com/wrencode" target="_blank" rel="noopener">
+      <a
+        href="https://twitter.com/wrencode"
+        target="_blank"
+        rel="noopener"
+        v-tooltip.bottom="'Wrencode on Twitter'"
+      >
         <svg
           class="social-media-icon"
           id="twitter-square"
@@ -82,6 +93,7 @@
         href="https://www.facebook.com/wrencode"
         target="_blank"
         rel="noopener"
+        v-tooltip.bottom="'Wrencode on Facebook'"
       >
         <svg
           class="social-media-icon"
@@ -109,6 +121,7 @@
         href="https://www.instagram.com/wrencode_llc"
         target="_blank"
         rel="noopener"
+        v-tooltip.bottom="'Wrencode on Instagram'"
       >
         <svg
           class="social-media-icon"
@@ -138,6 +151,7 @@
         href="https://www.reddit.com/user/wrencode"
         target="_blank"
         rel="noopener"
+        v-tooltip.bottom="'Wrencode on Reddit'"
       >
         <svg
           class="social-media-icon"
@@ -166,6 +180,7 @@
         href="https://www.youtube.com/channel/UCyg5T3IhUCZai0AXhmYeeRw"
         target="_blank"
         rel="noopener"
+        v-tooltip.bottom="'Wrencode on YouTube'"
       >
         <svg
           class="social-media-icon"

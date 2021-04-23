@@ -84,7 +84,11 @@ export default {
 }
 
 .p-card-title > a:hover {
-  color: #7e3227;
+  color: #7e3227 !important;
+}
+
+.p-card-title > a:visited {
+  color: #4f859f;
 }
 
 .container {
@@ -105,12 +109,16 @@ export default {
 }
 
 @media (prefers-color-scheme: dark) {
-  .client-card a {
+  .p-card-title > a {
     color: #aba18c;
   }
 
-  .client-card a:hover {
-    color: #f09651;
+  .p-card-title > a:hover {
+    color: #f09651 !important;
+  }
+
+  .p-card-title > a:visited {
+    color: #aac4e2;
   }
 
   .client-thumbnail {

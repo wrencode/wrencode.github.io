@@ -8,6 +8,7 @@
             <img
               alt="Profile picture of Wren Rudolph"
               src="@/assets/images/profiles/headshot-wren-rudolph.jpg"
+              v-tooltip.top="'Hello, welcome to Wrencode!'"
             />
           </template>
           <template #title> Wren Rudolph </template>
@@ -35,6 +36,7 @@
                   href="mailto:wren@wrencode.com"
                   target="_blank"
                   rel="noopener"
+                  v-tooltip.bottom="'Send an email to Wren Rudolph'"
                 >
                   <svg
                     data-name="Livello 1"
@@ -79,6 +81,7 @@
                   href="https://github.com/uberfastman"
                   target="_blank"
                   rel="noopener"
+                  v-tooltip.bottom="'Wren Rudolph on GitHub'"
                 >
                   <svg
                     id="github-circle"
@@ -94,6 +97,7 @@
                   href="https://www.linkedin.com/in/wren-rudolph/"
                   target="_blank"
                   rel="noopener"
+                  v-tooltip.bottom="'Wren Rudolph on LinkedIn'"
                 >
                   <svg
                     id="linkedin-circle"

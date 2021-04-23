@@ -1,3 +1,4 @@
+<!--suppress JSUnusedLocalSymbols -->
 <template>
   <div class="p-grid">
     <div class="p-col">
@@ -33,6 +34,7 @@ export default {
       colorSchemeBackgroundColor = "rgba(0, 0, 0, 0.75)";
     }
 
+    // noinspection JSUnusedLocalSymbols
     return {
       chartData: {
         labels: [
@@ -46,7 +48,7 @@ export default {
             data: [40, 25, 20, 15],
             backgroundColor: [
               "rgba(79, 133, 159, 0.75)",
-              "rgba(209, 242, 235, 0.75)",
+              "rgba(209,242,235,0.75)",
               "rgba(120, 82, 88, 0.75)",
               "rgba(170, 196, 226, 0.75)",
             ], // jay bird, humming bird, falcon, blue bird
@@ -81,6 +83,13 @@ export default {
             fontColor: colorSchemeFontColor,
             align: "left",
           },
+          onClick: function (e, legendItem) {
+            // TODO: come up with something interesting to do when the legends are clicked
+            /* eslint-disable no-unused-vars */
+            let event = e;
+            let item = legendItem;
+            /* eslint-enable no-unused-vars */
+          },
         },
         title: {
           display: true,
@@ -95,12 +104,20 @@ export default {
         },
         tooltips: {
           bodyFontFamily: "Source Code Pro",
-          bodyFontSize: 20,
+          bodyFontSize: 16,
           bodyFontColor: colorSchemeFontColor,
           backgroundColor: colorSchemeBackgroundColor,
           displayColors: false,
           caretSize: 5,
           caretPadding: 10,
+          callbacks: {
+            label: function (tooltipItem, data) {
+              let label = data.labels[tooltipItem.index];
+              let value =
+                data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+              return label + ": " + value + "%";
+            },
+          },
         },
       },
     };

@@ -211,6 +211,7 @@ html {
 .p-menuitem {
   background: transparent !important;
   color: #4a4139 !important;
+  font-family: "Source Code Pro", Roboto, sans-serif;
 }
 
 .p-menuitem:after {
@@ -272,6 +273,7 @@ html {
   color: #aba18c !important;
   border-radius: 5px !important;
   border: none !important;
+  font-family: "Source Code Pro", Roboto, sans-serif !important;
 }
 
 .p-card {
@@ -312,6 +314,7 @@ html {
 .p-tooltip-text {
   color: #4a4139 !important;
   background: rgba(256, 256, 256, 0.75) !important;
+  text-align: center !important;
 }
 
 @media (prefers-color-scheme: dark) {

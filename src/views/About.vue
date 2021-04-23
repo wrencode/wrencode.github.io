@@ -103,6 +103,7 @@ export default {
 <style>
 .p-accordion {
   background: #aba18c !important;
+  font-family: "Source Code Pro", Roboto, sans-serif !important;
 }
 
 .p-accordion-tab {
@@ -141,6 +142,18 @@ export default {
   color: #7e3227 !important;
 }
 
+a {
+  color: #4a4139;
+}
+
+a:hover {
+  color: #7e3227 !important;
+}
+
+a:visited {
+  color: #4f859f;
+}
+
 @media (prefers-color-scheme: dark) {
   .p-accordion {
     background: #4a4139 !important;
@@ -167,6 +180,18 @@ export default {
   .p-accordion-tab:hover > .p-accordion-header .p-accordion-header-link,
   .p-accordion-tab-active:hover > .p-accordion-header .p-accordion-header-link {
     color: #f09651 !important;
+  }
+
+  a {
+    color: #aba18c;
+  }
+
+  a:hover {
+    color: #f09651 !important;
+  }
+
+  a:visited {
+    color: #aac4e2;
   }
 }
 </style>
