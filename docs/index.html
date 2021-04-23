@@ -1,4 +1,8 @@
-<!DOCTYPE html><html lang="" style=""><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Wrencode, LLC provides software engineering services, machine learning and natural language processing expertise, as well as general technical consulting."><meta name="keywords" content="software engineering, software development, technical consulting, machine learning, ML, natural language processing, NLP, artificial intelligence, AI"><meta name="author" content="Wren Rudolph"><meta name="copyright" content="Wren Rudolph"><link rel="icon" href="/favicon.ico"><title>Wrencode, LLC | Technical Consulting</title><script>// Single Page Apps for GitHub Pages
+<!DOCTYPE html><html lang="" style=""><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Wrencode, LLC provides software engineering services, machine learning and natural language processing expertise, as well as general technical consulting."><meta name="keywords" content="software engineering, software development, technical consulting, machine learning, ML, natural language processing, NLP, artificial intelligence, AI"><meta name="author" content="Wren Rudolph"><meta name="copyright" content="Wren Rudolph"><link rel="icon" href="/favicon.ico"><title>Wrencode, LLC | Technical Consulting</title><script async src="https://www.googletagmanager.com/gtag/js?id=G-8NEHJ22D1F"></script><script>window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+
+      gtag("config", "G-8NEHJ22D1F");</script><script>// Single Page Apps for GitHub Pages
     // MIT License
     // https://github.com/rafgraph/spa-github-pages
     // This script checks to see if a redirect is present in the query string,
@@ -9,10 +13,10 @@
     // the correct url will be waiting in the browser's history for
     // the single page app to route accordingly.
     (function(l) {
-      if (l.search[1] === '/' ) {
-        let decoded = l.search.slice(1).split('&').map(function (s) {
-          return s.replace(/~and~/g, '&');
-        }).join('?');
+      if (l.search[1] === "/" ) {
+        let decoded = l.search.slice(1).split("&").map(function (s) {
+          return s.replace(/~and~/g, "&");
+        }).join("?");
         window.history.replaceState(null, null,
           l.pathname.slice(0, -1) + decoded + l.hash
         );
