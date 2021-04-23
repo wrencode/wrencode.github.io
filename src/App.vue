@@ -231,6 +231,10 @@ html {
   justify-content: center;
 }
 
+.p-menuitem-link:focus {
+  box-shadow: none !important;
+}
+
 .p-menuitem-icon,
 .p-menuitem-text,
 .p-submenu-icon {
