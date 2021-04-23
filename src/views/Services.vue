@@ -11,6 +11,11 @@
 
 <script>
 import Chart from "primevue/chart";
+// noinspection ES6CheckImport
+import { Chart as ChartJs } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+
+ChartJs.plugins.register(ChartDataLabels);
 
 export default {
   name: "Services",
@@ -19,6 +24,68 @@ export default {
   },
   props: {
     msg: String,
+  },
+  methods: {
+    getServices() {
+      return [
+        {
+          category: "Software Development",
+          abbr: "SD",
+          value: 40,
+        },
+        {
+          category: "Technical Consulting",
+          abbr: "TC",
+          value: 25,
+        },
+        {
+          category: "Machine Learning",
+          abbr: "ML",
+          value: 20,
+        },
+        {
+          category: "Natural Language Processing",
+          abbr: "NLP",
+          value: 15,
+        },
+      ];
+    },
+    getServicesLabels() {
+      let services = this.getServices().sort(function (first, second) {
+        return second.value - first.value;
+      });
+
+      let sortedServicesLabels = [];
+      for (let service of services) {
+        sortedServicesLabels.push(service.category);
+      }
+
+      return sortedServicesLabels;
+    },
+    getServicesAbbrs() {
+      let services = this.getServices().sort(function (first, second) {
+        return second.value - first.value;
+      });
+
+      let sortedServicesAbbrs = [];
+      for (let service of services) {
+        sortedServicesAbbrs.push(service.abbr);
+      }
+
+      return sortedServicesAbbrs;
+    },
+    getServicesValues() {
+      let services = this.getServices().sort(function (first, second) {
+        return second.value - first.value;
+      });
+
+      let sortedServicesValues = [];
+      for (let service of services) {
+        sortedServicesValues.push(service.value);
+      }
+
+      return sortedServicesValues;
+    },
   },
   data() {
     let darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -37,15 +104,17 @@ export default {
     // noinspection JSUnusedLocalSymbols
     return {
       chartData: {
-        labels: [
-          "Software Development",
-          "Technical Consulting",
-          "Machine Learning",
-          "Natural Language Processing",
-        ],
+        labels: this.getServicesLabels(),
+        // labels: [
+        //   "Software Development",
+        //   "Technical Consulting",
+        //   "Machine Learning",
+        //   "Natural Language Processing",
+        // ],
         datasets: [
           {
-            data: [40, 25, 20, 15],
+            data: this.getServicesValues(),
+            // data: [40, 25, 20, 15],
             backgroundColor: [
               "rgba(79, 133, 159, 0.75)",
               "rgba(209,242,235,0.75)",
@@ -56,6 +125,7 @@ export default {
           },
         ],
       },
+      plugins: [ChartDataLabels],
       options: {
         responsive: true,
         maintainAspectRatio: false,
@@ -112,10 +182,32 @@ export default {
           caretPadding: 10,
           callbacks: {
             label: function (tooltipItem, data) {
-              let label = data.labels[tooltipItem.index];
-              let value =
-                data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-              return label + ": " + value + "%";
+              return data.labels[tooltipItem.index];
+              // let label = data.labels[tooltipItem.index];
+              // let value =
+              //   data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+              // return label + ": " + value + "%";
+            },
+          },
+        },
+        plugins: {
+          datalabels: {
+            color: colorSchemeFontColor,
+            font: {
+              family: "Source Code Pro",
+              size: 20,
+              weight: "bold",
+            },
+            // borderWidth: 2,
+            // borderColor: colorSchemeBorderColor,
+            borderRadius: 5,
+            backgroundColor: colorSchemeBorderColor,
+            formatter: (value, context) => {
+              return (
+                this.getServicesAbbrs()[context.dataIndex] + ": " + value + "%"
+              );
+              // return context.chart.data.labels[context.dataIndex] + "\n" + value + "%"
+              // return value + "%"
             },
           },
         },
