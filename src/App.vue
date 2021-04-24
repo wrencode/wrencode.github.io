@@ -2,7 +2,7 @@
   <div id="app">
     <Menubar :model="items" />
     <br />
-    <router-view />
+    <router-view :surprise="surprise" :resetSurprise="resetSurprise" />
     <br />
     <Button
       label="Back to Top"
@@ -20,6 +20,20 @@
 import Menubar from "primevue/menubar";
 import Button from "primevue/button";
 
+const konamiCode = [
+  "ArrowUp",
+  "ArrowUp",
+  "ArrowDown",
+  "ArrowDown",
+  "ArrowLeft",
+  "ArrowRight",
+  "ArrowLeft",
+  "ArrowRight",
+  "b",
+  "a",
+];
+let keySequence = [];
+
 export default {
   name: "App",
   components: {
@@ -28,9 +42,13 @@ export default {
   },
   created() {
     window.addEventListener("scroll", this.onScroll);
+    window.addEventListener("keydown", this.freezeScroll);
+    window.addEventListener("keyup", this.konami);
   },
   unmounted() {
     window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("keydown", this.freezeScroll);
+    window.removeEventListener("keyup", this.konami);
   },
   methods: {
     onClick() {
@@ -83,6 +101,41 @@ export default {
         .item(0);
       selectedMenubarItem.classList.add("menubar-item-active");
     },
+    freezeScroll(e) {
+      if (
+        keySequence[0] === "ArrowUp" &&
+        keySequence[1] === "ArrowUp" &&
+        e.key === "ArrowDown"
+      ) {
+        e.preventDefault();
+      }
+    },
+    konami(e) {
+      keySequence.push(e.key);
+
+      let keySequenceStr = keySequence.join("");
+      let konamiSliceStr = konamiCode.slice(0, keySequence.length).join("");
+
+      if (keySequenceStr === konamiCode.join("")) {
+        this.activateSurprise();
+      } else if (keySequenceStr === konamiSliceStr) {
+        // pass
+      } else {
+        if (e.key === "ArrowUp") {
+          keySequence = ["ArrowUp"];
+        } else {
+          keySequence = [];
+        }
+      }
+    },
+    activateSurprise() {
+      console.log("activating...");
+      this.surprise = true;
+    },
+    resetSurprise() {
+      console.log("resetting...");
+      this.surprise = false;
+    },
   },
   data() {
     return {
@@ -123,6 +176,7 @@ export default {
           class: "menubar-item menubar-item-contact",
         },
       ],
+      surprise: false,
     };
   },
 };
