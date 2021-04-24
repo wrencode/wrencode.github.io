@@ -129,11 +129,9 @@ export default {
       }
     },
     activateSurprise() {
-      console.log("activating...");
       this.surprise = true;
     },
     resetSurprise() {
-      console.log("resetting...");
       this.surprise = false;
     },
   },
