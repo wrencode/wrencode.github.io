@@ -47,8 +47,6 @@ export default {
 <style scoped>
 .wrencode-logo {
   fill: #4a4139;
-  width: 30%;
-  min-width: 250px;
 }
 
 /*.wrencode-logo:hover {*/

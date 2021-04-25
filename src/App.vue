@@ -1,6 +1,16 @@
 <template>
   <div id="app">
-    <Menubar :model="items" />
+    <Menubar :model="items">
+      <template #start>
+        <a href="/">
+          <WrencodeLogo class="menubar-logo" />
+        </a>
+        <p class="menubar-title">Wrencode, LLC</p>
+      </template>
+      <!--      <template #end>-->
+      <!--      </template>-->
+    </Menubar>
+    <br />
     <br />
     <router-view :surprise="surprise" :resetSurprise="resetSurprise" />
     <br />
@@ -19,6 +29,7 @@
 <script>
 import Menubar from "primevue/menubar";
 import Button from "primevue/button";
+import WrencodeLogo from "@/components/svg/wrencode-logo";
 
 const konamiCode = [
   "ArrowUp",
@@ -39,6 +50,7 @@ export default {
   components: {
     Menubar,
     Button,
+    WrencodeLogo,
   },
   created() {
     window.addEventListener("scroll", this.onScroll);
@@ -218,13 +230,19 @@ html {
   text-align: center;
 }
 
+.p-menubar {
+  left: 0;
+  height: 65px !important;
+  width: 100% !important;
+  justify-content: space-between;
+  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.25) !important;
+}
+
 .p-menubar:not(.p-menubar-mobile-active) {
   background: #aba18c !important;
   position: absolute;
   top: 0;
-  width: 25%;
   border: 0 !important;
-  display: flex;
   /*justify-content: space-around;*/
 }
 
@@ -232,10 +250,35 @@ html {
   background: #aba18c !important;
   position: absolute !important;
   top: 0;
-  width: 50%;
+  width: 100%;
   border: 0 !important;
   display: flex;
-  /*justify-content: space-around;*/
+  justify-content: space-between;
+}
+
+.p-menubar-start {
+  font-family: "Source Code Pro", Roboto, sans-serif;
+  color: #4a4139 !important;
+  background: #aba18c !important;
+  min-width: 200px !important;
+  width: 200px !important;
+  white-space: nowrap;
+  font-weight: 600 !important;
+  display: block !important;
+  margin-right: 20px !important;
+}
+
+.menubar-logo {
+  height: 65px;
+  width: 45px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.menubar-title {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
 }
 
 .p-menubar-root-list {
@@ -243,6 +286,10 @@ html {
   width: 100% !important;
   border: 0 !important;
   display: inline-flex;
+}
+
+.p-menubar-mobile-active .p-menubar-root-list {
+  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.25) !important;
 }
 
 .p-menubar-button {
@@ -393,6 +440,11 @@ html {
     background: #4a4139 !important;
   }
 
+  .p-menubar-start {
+    color: #aba18c !important;
+    background: #4a4139 !important;
+  }
+
   .p-menubar-root-list {
     background: #4a4139 !important;
   }
@@ -403,6 +455,7 @@ html {
 
   .p-menubar-button:hover {
     color: #f09651 !important; /* toucan */
+    background: #4a4139 !important;
   }
 
   .p-menuitem {

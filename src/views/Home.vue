@@ -68,6 +68,11 @@ export default {
   text-align: center;
 }
 
+#wrencode-logo {
+  width: 30%;
+  min-width: 250px;
+}
+
 h3 {
   margin: 40px 0 0;
 }
