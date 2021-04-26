@@ -6,8 +6,28 @@
           <WrencodeLogo class="menubar-logo" />
         </a>
         <p class="menubar-title">Wrencode, LLC</p>
+        <div id="menubar-switch-view-button-filler" />
+        <Button
+          label="Show Desktop View"
+          id="menubar-desktop-view-button"
+          class="p-button-icon-only p-button-rounded menubar-switch-view-button"
+          @click="showDesktopView"
+          v-tooltip.top="'Show Desktop View'"
+        >
+          <i class="pi pi-desktop"></i>
+        </Button>
+        <Button
+          label="Show Mobile View"
+          id="menubar-mobile-view-button"
+          class="p-button-icon-only p-button-rounded menubar-switch-view-button hide-button"
+          @click="showMobileView"
+          v-tooltip.top="'Show Mobile View'"
+        >
+          <i class="pi pi-mobile"></i>
+        </Button>
       </template>
       <!--      <template #end>-->
+      <!--        Test-->
       <!--      </template>-->
     </Menubar>
     <br />
@@ -112,6 +132,69 @@ export default {
         .getElementsByClassName(`menubar-item-${menubarItemName}`)
         .item(0);
       selectedMenubarItem.classList.add("menubar-item-active");
+    },
+    // isCompact() {
+    //   return window.matchMedia("(max-width: 960px)");
+    // },
+    showDesktopView() {
+      let menubarDesktopViewButton = document.getElementById(
+        "menubar-desktop-view-button"
+      );
+      menubarDesktopViewButton.classList.add("hide-button");
+      let menubarMobileViewButton = document.getElementById(
+        "menubar-mobile-view-button"
+      );
+      menubarMobileViewButton.classList.remove("hide-button");
+
+      let app = document.getElementById("app");
+      app.style.minWidth = "960px";
+
+      document.getElementsByClassName("p-menubar").forEach((elem) => {
+        elem.style.position = "absolute";
+        elem.style.minWidth = "960px";
+        elem.style.padding = "0.5rem";
+      });
+      document
+        .getElementsByClassName("p-menubar-button")
+        .forEach((elem) => (elem.style.display = "none"));
+      document.getElementsByClassName("p-menubar-root-list").forEach((elem) => {
+        elem.style.position = "relative";
+        elem.style.display = "inline-flex";
+        elem.style.boxShadow = "none";
+      });
+      document
+        .getElementsByClassName("p-menuitem")
+        .forEach((elem) => (elem.style.width = "initial"));
+    },
+    showMobileView() {
+      let menubarDesktopViewButton = document.getElementById(
+        "menubar-desktop-view-button"
+      );
+      menubarDesktopViewButton.classList.remove("hide-button");
+      let menubarMobileViewButton = document.getElementById(
+        "menubar-mobile-view-button"
+      );
+      menubarMobileViewButton.classList.add("hide-button");
+
+      let app = document.getElementById("app");
+      app.style.removeProperty("min-width");
+
+      document.getElementsByClassName("p-menubar").forEach((elem) => {
+        elem.style.removeProperty("position");
+        elem.style.removeProperty("min-width");
+        elem.style.removeProperty("padding");
+      });
+      document
+        .getElementsByClassName("p-menubar-button")
+        .forEach((elem) => elem.style.removeProperty("display"));
+      document.getElementsByClassName("p-menubar-root-list").forEach((elem) => {
+        elem.style.removeProperty("position");
+        elem.style.removeProperty("display");
+        elem.style.removeProperty("box-shadow");
+      });
+      document
+        .getElementsByClassName("p-menuitem")
+        .forEach((elem) => elem.style.removeProperty("width"));
     },
     freezeScroll(e) {
       if (
@@ -230,6 +313,31 @@ html {
   text-align: center;
 }
 
+/*@media screen and (max-width: 960px) {*/
+
+/*  #app {*/
+/*    min-width: 960px !important;*/
+/*  }*/
+
+/*  .p-menubar {*/
+/*    position: absolute !important;*/
+/*  }*/
+
+/*  .p-menubar .p-menubar-button {*/
+/*    display: none !important;*/
+/*  }*/
+
+/*  .p-menubar .p-menubar-root-list {*/
+/*    position: relative !important;*/
+/*    display: inline-flex !important;*/
+/*    box-shadow: none !important;*/
+/*  }*/
+
+/*  .p-menubar .p-menubar-root-list .p-menuitem {*/
+/*    width: initial !important;*/
+/*  }*/
+/*}*/
+
 .p-menubar {
   left: 0;
   height: 65px !important;
@@ -260,12 +368,13 @@ html {
   font-family: "Source Code Pro", Roboto, sans-serif;
   color: #4a4139 !important;
   background: #aba18c !important;
-  min-width: 200px !important;
-  width: 200px !important;
+  min-width: 215px !important;
+  width: 215px !important;
   white-space: nowrap;
   font-weight: 600 !important;
   display: block !important;
   margin-right: 20px !important;
+  justify-content: left !important;
 }
 
 .menubar-logo {
@@ -281,6 +390,32 @@ html {
   vertical-align: middle;
 }
 
+#menubar-switch-view-button-filler {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+  width: 2.357rem;
+}
+
+.menubar-switch-view-button {
+  display: none !important;
+  margin-left: 10px !important;
+  background: transparent !important;
+  border: none !important;
+  color: #4a4139 !important;
+  vertical-align: middle !important;
+}
+
+@media screen and (max-width: 960px) {
+  #menubar-switch-view-button-filler {
+    display: none !important;
+  }
+
+  .menubar-switch-view-button {
+    display: inline-block !important;
+  }
+}
+
 .p-menubar-root-list {
   background: #aba18c !important;
   width: 100% !important;
@@ -288,8 +423,10 @@ html {
   display: inline-flex;
 }
 
-.p-menubar-mobile-active .p-menubar-root-list {
-  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.25) !important;
+@media screen and (max-width: 960px) {
+  .p-menubar-mobile-active .p-menubar-root-list {
+    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.25) !important;
+  }
 }
 
 .p-menubar-button {
@@ -410,8 +547,20 @@ html {
   display: inline-flex !important;
 }
 
+.p-tooltip.p-tooltip-right .p-tooltip-arrow {
+  border-right-color: rgba(256, 256, 256, 0.75) !important;
+}
+
+.p-tooltip.p-tooltip-left .p-tooltip-arrow {
+  border-left-color: rgba(256, 256, 256, 0.75) !important;
+}
+
 .p-tooltip.p-tooltip-top .p-tooltip-arrow {
   border-top-color: rgba(256, 256, 256, 0.75) !important;
+}
+
+.p-tooltip.p-tooltip-bottom .p-tooltip-arrow {
+  border-bottom-color: rgba(256, 256, 256, 0.75) !important;
 }
 
 .p-tooltip-text {
@@ -443,6 +592,10 @@ html {
   .p-menubar-start {
     color: #aba18c !important;
     background: #4a4139 !important;
+  }
+
+  .menubar-switch-view-button {
+    color: #aba18c !important;
   }
 
   .p-menubar-root-list {
@@ -517,8 +670,20 @@ html {
     border-color: #f09651;
   }
 
+  .p-tooltip.p-tooltip-right .p-tooltip-arrow {
+    border-right-color: rgba(0, 0, 0, 0.75) !important;
+  }
+
+  .p-tooltip.p-tooltip-left .p-tooltip-arrow {
+    border-left-color: rgba(0, 0, 0, 0.75) !important;
+  }
+
   .p-tooltip.p-tooltip-top .p-tooltip-arrow {
     border-top-color: rgba(0, 0, 0, 0.75) !important;
+  }
+
+  .p-tooltip.p-tooltip-bottom .p-tooltip-arrow {
+    border-bottom-color: rgba(0, 0, 0, 0.75) !important;
   }
 
   .p-tooltip-text {
