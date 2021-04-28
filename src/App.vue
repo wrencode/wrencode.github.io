@@ -44,12 +44,23 @@
       <i class="pi pi-arrow-up"></i>
     </Button>
   </div>
+  <footer class="footer">
+    <SocialMedia class="footer-social-media" />
+    <p>Copyright © {{ getYear() }} Wrencode, LLC. All rights reserved.</p>
+    <Button
+      class="p-button-rounded p-button-sm footer-surprise"
+      label="konami?"
+      @click="activateSurprise"
+      v-if="isHome"
+    />
+  </footer>
 </template>
 
 <script>
 import Menubar from "primevue/menubar";
 import Button from "primevue/button";
 import WrencodeLogo from "@/components/svg/wrencode-logo";
+import SocialMedia from "@/components/svg/social-media";
 
 const konamiCode = [
   "ArrowUp",
@@ -68,6 +79,7 @@ let keySequence = [];
 export default {
   name: "App",
   components: {
+    SocialMedia,
     Menubar,
     Button,
     WrencodeLogo,
@@ -196,6 +208,9 @@ export default {
         .getElementsByClassName("p-menuitem")
         .forEach((elem) => elem.style.removeProperty("width"));
     },
+    getYear() {
+      return new Date().getFullYear();
+    },
     freezeScroll(e) {
       if (
         keySequence[0] === "ArrowUp" &&
@@ -272,6 +287,11 @@ export default {
       surprise: false,
     };
   },
+  computed: {
+    isHome() {
+      return this.$route.name === "Home";
+    },
+  },
 };
 </script>
 
@@ -298,7 +318,12 @@ html {
   padding: 0;
   margin: 0;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
 }
 
 #app {
@@ -309,8 +334,10 @@ html {
   font-family: "Source Code Pro", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: 50px 10px;
+  margin: 20px 10px;
   text-align: center;
+  min-height: 80vh;
+  flex: 1 0 auto;
 }
 
 /*@media screen and (max-width: 960px) {*/
@@ -569,6 +596,31 @@ html {
   text-align: center !important;
 }
 
+.footer {
+  margin-top: 50px;
+  flex-shrink: 0;
+  bottom: 0;
+  color: rgba(74, 65, 57, 0.5);
+  font-size: 8pt !important;
+}
+
+.footer-social-media svg {
+  fill: rgba(74, 65, 57, 0.5) !important;
+  width: 25px !important;
+  height: 25px !important;
+}
+
+.footer-surprise {
+  text-align: right !important;
+  float: right !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  color: rgba(74, 65, 57, 0.25) !important;
+  background: transparent !important;
+  border: none !important;
+  font-size: 6pt !important;
+}
+
 @media (prefers-color-scheme: dark) {
   /* dark mode css */
   body,
@@ -689,6 +741,20 @@ html {
   .p-tooltip-text {
     color: #aba18c !important;
     background: rgba(0, 0, 0, 0.75) !important;
+  }
+
+  .footer {
+    color: rgba(171, 161, 140, 0.5);
+  }
+
+  .footer-social-media svg {
+    fill: rgba(171, 161, 140, 0.5) !important;
+    width: 25px !important;
+    height: 25px !important;
+  }
+
+  .footer-surprise {
+    color: rgba(171, 161, 140, 0.25) !important;
   }
 }
 </style>
