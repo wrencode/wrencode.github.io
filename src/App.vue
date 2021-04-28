@@ -33,17 +33,18 @@
     <br />
     <br />
     <router-view :surprise="surprise" :resetSurprise="resetSurprise" />
-    <br />
-    <Button
-      label="Back to Top"
-      id="back-to-top-button"
-      class="p-button-icon-only p-button-rounded p-button-outlined hide-button"
-      @click="onClick"
-      v-tooltip.top="'Back to Top'"
-    >
-      <i class="pi pi-arrow-up"></i>
-    </Button>
+    <!--    <br />-->
+    <!--    <Button-->
+    <!--      label="Back to Top"-->
+    <!--      id="back-to-top-button"-->
+    <!--      class="p-button-icon-only p-button-rounded p-button-outlined hide-button"-->
+    <!--      @click="onClick"-->
+    <!--      v-tooltip.top="'Back to Top'"-->
+    <!--    >-->
+    <!--      <i class="pi pi-arrow-up"></i>-->
+    <!--    </Button>-->
   </div>
+  <ScrollTop :threshold="65" />
   <footer class="footer">
     <SocialMedia class="footer-social-media" />
     <p>Copyright © {{ getYear() }} Wrencode, LLC. All rights reserved.</p>
@@ -61,6 +62,7 @@ import Menubar from "primevue/menubar";
 import Button from "primevue/button";
 import WrencodeLogo from "@/components/svg/wrencode-logo";
 import SocialMedia from "@/components/svg/social-media";
+import ScrollTop from "primevue/scrolltop";
 
 const konamiCode = [
   "ArrowUp",
@@ -83,6 +85,7 @@ export default {
     Menubar,
     Button,
     WrencodeLogo,
+    ScrollTop,
   },
   created() {
     window.addEventListener("scroll", this.onScroll);
@@ -566,6 +569,18 @@ body {
   border-color: #7e3227;
 }
 
+.p-scrolltop.p-link {
+  background: rgba(74, 65, 57, 0.7) !important;
+}
+
+.p-scrolltop.p-link:hover {
+  background: rgba(74, 65, 57, 0.8) !important;
+}
+
+.p-scrolltop .p-scrolltop-icon {
+  color: #aba18c !important;
+}
+
 .hide-button {
   display: none !important;
 }
@@ -720,6 +735,18 @@ body {
     background: #f09651;
     color: #4a4139;
     border-color: #f09651;
+  }
+
+  .p-scrolltop.p-link {
+    background: rgba(171, 161, 140, 0.7) !important;
+  }
+
+  .p-scrolltop.p-link:hover {
+    background: rgba(171, 161, 140, 0.8) !important;
+  }
+
+  .p-scrolltop .p-scrolltop-icon {
+    color: #4a4139 !important;
   }
 
   .p-tooltip.p-tooltip-right .p-tooltip-arrow {
