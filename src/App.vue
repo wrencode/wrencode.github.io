@@ -116,11 +116,12 @@ export default {
       let rootElement = document.documentElement;
       let backToTopButton = document.getElementById("back-to-top-button");
 
-      // console.log("scroll height:", rootElement.scrollHeight)
-      // console.log("client height:", rootElement.clientHeight)
-      // console.log("scroll top:", rootElement.scrollTop)
+      console.log("scroll height:", rootElement.scrollHeight);
+      console.log("client height:", rootElement.clientHeight);
+      console.log("scroll top:", rootElement.scrollTop);
 
-      if (rootElement.scrollHeight > rootElement.clientHeight + 100) {
+      // if (rootElement.scrollHeight > rootElement.clientHeight + 300) {
+      if (rootElement.scrollTop > 65) {
         backToTopButton.classList.remove("hide-button");
         backToTopButton.classList.add("show-button");
       } else {
@@ -561,6 +562,18 @@ body {
   background: #aba18c;
   color: #4a4139;
   border-color: #4a4139;
+  z-index: 1;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.16);
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
 #back-to-top-button:hover {
