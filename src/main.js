@@ -10,7 +10,6 @@ import AccordionTab from "primevue/accordiontab";
 import Chart from "primevue/chart";
 import Fieldset from "primevue/fieldset";
 import Card from "primevue/card";
-import ScrollTop from "primevue/scrolltop";
 
 import "primevue/resources/themes/nova/theme.css";
 import "primevue/resources/primevue.min.css";
@@ -30,6 +29,5 @@ app.component("AccordionTab", AccordionTab);
 app.component("Chart", Chart);
 app.component("Fieldset", Fieldset);
 app.component("Card", Card);
-app.component("ScrollTop", ScrollTop);
 
 app.mount("#app");
