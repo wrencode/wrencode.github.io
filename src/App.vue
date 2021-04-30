@@ -126,6 +126,13 @@ export default {
       }
     },
     onMenubarItemClick(menubarItemName) {
+      // this.$gtag(
+      //     "config",
+      //     window.GA_MEASUREMENT_ID,
+      //     {
+      //       page_path: `/${menubarItemName}`
+      //     }
+      // );
       this.hideBackToTopButton();
       this.makeMenubarItemActive(menubarItemName);
     },

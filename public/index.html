@@ -16,12 +16,42 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NEHJ22D1F"></script>
     <script>
+      window.GA_MEASUREMENT_ID = "G-8NEHJ22D1F";
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      window.gtag = function gtag() {
+        dataLayer.push(arguments);
+      }
       gtag("js", new Date());
 
-      gtag("config", "G-8NEHJ22D1F");
+      gtag(
+        "config",
+        window.GA_MEASUREMENT_ID,
+        {
+          // app_name: "Wrencode, LLC Website",
+          send_page_view: false
+        }
+      );
     </script>
+
+    <!-- Google Tag Manager
+    <script>
+      (
+        function(w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push(
+            {
+              "gtm.start": new Date().getTime(),
+              event: "gtm.js"
+            }
+          );
+          let f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = (l != "dataLayer") ? "&l=" + l: "";
+          j.async = true;
+          j.src= "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+          f.parentNode.insertBefore(j, f);
+        }
+      ) (window,document,"script","dataLayer","GTM-NMQDHGT");
+    </script>
+     End Google Tag Manager -->
 
     <!-- Start Single Page Apps for GitHub Pages -->
     <script type="text/javascript">
@@ -50,9 +80,21 @@
 
   </head>
   <body>
+    <!-- Google Tag Manager (noscript)
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NMQDHGT"
+        height="0"
+        width="0"
+        style="display:none; visibility:hidden"
+      ></iframe>
+    </noscript>
+    End Google Tag Manager (noscript) -->
+
     <noscript>
       <strong>We're sorry but www.wrencode.com doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>

@@ -52,4 +52,11 @@ const router = createRouter({
   routes,
 });
 
+router.afterEach((to) => {
+  window.gtag("config", window.GA_MEASUREMENT_ID, {
+    page_path: to.fullPath,
+    send_page_view: true,
+  });
+});
+
 export default router;
