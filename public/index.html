@@ -10,13 +10,20 @@
     <meta name="author" content="Wren Rudolph" />
     <meta name="copyright" content="Wren Rudolph" />
 
+    <!--suppress HtmlUnknownTarget -->
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title>Wrencode, LLC | Technical Consulting</title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NEHJ22D1F"></script>
     <script>
-      window.GA_MEASUREMENT_ID = "G-8NEHJ22D1F";
+      // specify whether google analytics is tracking the website for development or production
+      if (window.location.hostname === "localhost") {
+        window.GA_MEASUREMENT_ID = "G-8NEHJ22D1F";
+      } else {
+        window.GA_MEASUREMENT_ID = "G-J3JVC3SBS0";
+      }
+
       window.dataLayer = window.dataLayer || [];
       window.gtag = function gtag() {
         dataLayer.push(arguments);
