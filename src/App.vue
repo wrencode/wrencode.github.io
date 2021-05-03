@@ -141,48 +141,6 @@ export default {
       // });
     },
     onClickMenubar() {
-      console.log("menubar clicked");
-
-      if (this.darkMode) {
-        document
-          .getElementsByClassName("p-menubar")
-          .forEach((elem) => elem.classList.remove("light-mode"));
-        document
-          .getElementsByClassName("p-menubar")
-          .forEach((elem) => elem.classList.add("dark-mode"));
-        document
-          .getElementsByClassName("p-menubar-button")
-          .forEach((elem) => elem.classList.remove("light-mode"));
-        document
-          .getElementsByClassName("p-menubar-button")
-          .forEach((elem) => elem.classList.add("dark-mode"));
-        document
-          .getElementsByClassName("p-menubar-start")
-          .forEach((elem) => elem.classList.remove("light-mode"));
-        document
-          .getElementsByClassName("p-menubar-start")
-          .forEach((elem) => elem.classList.add("dark-mode"));
-      } else {
-        document
-          .getElementsByClassName("p-menubar")
-          .forEach((elem) => elem.classList.remove("dark-mode"));
-        document
-          .getElementsByClassName("p-menubar")
-          .forEach((elem) => elem.classList.add("light-mode"));
-        document
-          .getElementsByClassName("p-menubar-button")
-          .forEach((elem) => elem.classList.remove("dark-mode"));
-        document
-          .getElementsByClassName("p-menubar-button")
-          .forEach((elem) => elem.classList.add("light-mode"));
-        document
-          .getElementsByClassName("p-menubar-start")
-          .forEach((elem) => elem.classList.remove("dark-mode"));
-        document
-          .getElementsByClassName("p-menubar-start")
-          .forEach((elem) => elem.classList.add("light-mode"));
-      }
-
       this.setMode();
     },
     onClickMenubarItem(menubarItemName) {
@@ -576,7 +534,7 @@ body {
   color: var(--toucan) !important;
 }
 
-.p-button-label {
+.menubar-switch-mode-button .p-button-label {
   display: none !important;
 }
 
@@ -927,6 +885,10 @@ body {
   background: transparent !important;
   border: none !important;
   font-size: 6pt !important;
+}
+
+.footer-surprise.dark-mode {
+  color: rgba(171, 161, 140, 0.25) !important;
 }
 
 @media (prefers-color-scheme: dark) {
