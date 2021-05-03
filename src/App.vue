@@ -1,6 +1,7 @@
+<!--suppress ALL -->
 <template>
   <div id="app">
-    <Menubar :model="items">
+    <Menubar :model="items" v-on:click="onClickMenubar" :key="darkMode">
       <template #start>
         <a href="/">
           <WrencodeLogo class="menubar-logo" />
@@ -11,7 +12,7 @@
           class="p-button-icon-only p-button-rounded menubar-switch-mode-button"
           onIcon="pi pi-sun"
           offIcon="pi pi-moon"
-          v-tooltip.bottom="'Switch Mode'"
+          v-tooltip.bottom="'Switch Dark/Light Mode'"
         />
         <div id="menubar-switch-view-button-filler" />
         <Button
@@ -50,7 +51,7 @@
     label="Back to Top"
     id="back-to-top-button"
     class="p-button-icon-only p-button-rounded p-button-outlined hide-button"
-    @click="onClick"
+    @click="onClickBackToTop"
     v-tooltip.top="'Back to Top'"
   >
     <i class="pi pi-arrow-up"></i>
@@ -108,20 +109,6 @@ export default {
     window.removeEventListener("keyup", this.konami);
   },
   methods: {
-    onClick() {
-      // let rootElement = document.documentElement;
-
-      window.scroll({
-        top: 0,
-        left: 0,
-        behavior: "smooth",
-      });
-
-      // rootElement.scrollTo({
-      //   top: 0,
-      //   behavior: "smooth",
-      // });
-    },
     onScroll() {
       let rootElement = document.documentElement;
       let backToTopButton = document.getElementById("back-to-top-button");
@@ -139,7 +126,66 @@ export default {
         backToTopButton.classList.add("hide-button");
       }
     },
-    onMenubarItemClick(menubarItemName) {
+    onClickBackToTop() {
+      // let rootElement = document.documentElement;
+
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+
+      // rootElement.scrollTo({
+      //   top: 0,
+      //   behavior: "smooth",
+      // });
+    },
+    onClickMenubar() {
+      console.log("menubar clicked");
+
+      if (this.darkMode) {
+        document
+          .getElementsByClassName("p-menubar")
+          .forEach((elem) => elem.classList.remove("light-mode"));
+        document
+          .getElementsByClassName("p-menubar")
+          .forEach((elem) => elem.classList.add("dark-mode"));
+        document
+          .getElementsByClassName("p-menubar-button")
+          .forEach((elem) => elem.classList.remove("light-mode"));
+        document
+          .getElementsByClassName("p-menubar-button")
+          .forEach((elem) => elem.classList.add("dark-mode"));
+        document
+          .getElementsByClassName("p-menubar-start")
+          .forEach((elem) => elem.classList.remove("light-mode"));
+        document
+          .getElementsByClassName("p-menubar-start")
+          .forEach((elem) => elem.classList.add("dark-mode"));
+      } else {
+        document
+          .getElementsByClassName("p-menubar")
+          .forEach((elem) => elem.classList.remove("dark-mode"));
+        document
+          .getElementsByClassName("p-menubar")
+          .forEach((elem) => elem.classList.add("light-mode"));
+        document
+          .getElementsByClassName("p-menubar-button")
+          .forEach((elem) => elem.classList.remove("dark-mode"));
+        document
+          .getElementsByClassName("p-menubar-button")
+          .forEach((elem) => elem.classList.add("light-mode"));
+        document
+          .getElementsByClassName("p-menubar-start")
+          .forEach((elem) => elem.classList.remove("dark-mode"));
+        document
+          .getElementsByClassName("p-menubar-start")
+          .forEach((elem) => elem.classList.add("light-mode"));
+      }
+
+      this.setMode();
+    },
+    onClickMenubarItem(menubarItemName) {
       // this.$gtag(
       //     "config",
       //     window.GA_MEASUREMENT_ID,
@@ -198,6 +244,10 @@ export default {
 
       let app = document.getElementById("app");
       app.style.minWidth = "960px";
+
+      document
+        .getElementsByClassName("view")
+        .forEach((elem) => (elem.style.minWidth = "960px"));
 
       document.getElementsByClassName("p-menubar").forEach((elem) => {
         elem.style.position = "absolute";
@@ -290,35 +340,35 @@ export default {
           label: "Home",
           icon: "pi pi-fw pi-home",
           to: "/",
-          command: this.onMenubarItemClick.bind(this, "home"),
+          command: this.onClickMenubarItem.bind(this, "home"),
           class: "menubar-item menubar-item-home",
         },
         {
           label: "About",
           icon: "pi pi-fw pi-info-circle",
           to: "/about",
-          command: this.onMenubarItemClick.bind(this, "about"),
+          command: this.onClickMenubarItem.bind(this, "about"),
           class: "menubar-item menubar-item-about",
         },
         {
           label: "Services",
           icon: "pi pi-fw pi-user-edit",
           to: "/services",
-          command: this.onMenubarItemClick.bind(this, "services"),
+          command: this.onClickMenubarItem.bind(this, "services"),
           class: "menubar-item menubar-item-services",
         },
         {
           label: "Clients",
           icon: "pi pi-fw pi-globe",
           to: "/clients",
-          command: this.onMenubarItemClick.bind(this, "clients"),
+          command: this.onClickMenubarItem.bind(this, "clients"),
           class: "menubar-item menubar-item-clients",
         },
         {
           label: "Contact",
           icon: "pi pi-fw pi-envelope",
           to: "/contact",
-          command: this.onMenubarItemClick.bind(this, "contact"),
+          command: this.onClickMenubarItem.bind(this, "contact"),
           class: "menubar-item menubar-item-contact",
         },
       ],
@@ -468,8 +518,8 @@ body {
   font-family: "Source Code Pro", Roboto, sans-serif;
   color: var(--wren) !important;
   background: var(--cactus-wren) !important;
-  min-width: 215px !important;
-  width: 215px !important;
+  min-width: 255px !important;
+  width: 255px !important;
   white-space: nowrap;
   font-weight: 600 !important;
   display: block !important;
@@ -532,14 +582,12 @@ body {
 
 #menubar-switch-view-button-filler {
   display: inline-block;
-  margin-left: 10px;
   vertical-align: middle;
   width: 2.357rem;
 }
 
 .menubar-switch-view-button {
   display: none !important;
-  margin-left: 10px !important;
   background: transparent !important;
   border: none !important;
   color: var(--wren) !important;

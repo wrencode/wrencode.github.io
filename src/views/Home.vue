@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home view">
     <Confetti id="surprise" :class="getSurpriseClass(surprise)" />
     <a href="/">
       <WrencodeLogo id="wrencode-logo" class="bring-to-front-of-bg-img" />
@@ -75,13 +75,14 @@ export default {
 .home:before {
   content: "";
   background-image: url("../assets/images/banners/wrencode-banner.png");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: repeat-y;
   position: absolute;
   top: 65px;
+  left: 0;
   right: 0;
   /*bottom: 20vh;*/
   bottom: 15vh;
-  left: 0;
   opacity: 0.25;
 }
 
