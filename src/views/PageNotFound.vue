@@ -12,6 +12,12 @@
 <script>
 export default {
   name: "PageNotFound",
+  props: {
+    setMode: Function,
+  },
+  mounted() {
+    this.setMode();
+  },
 };
 </script>
 
@@ -20,29 +26,53 @@ export default {
   text-align: center;
   border-style: solid;
   border-width: 4px;
-  border-color: #4a4139;
+  border-color: var(--wren);
   border-radius: 5px;
 }
 
+.page-not-found.dark-mode {
+  border-color: var(--cactus-wren);
+}
+
 a {
-  color: #4a4139;
+  color: var(--wren);
+}
+
+a.dark-mode {
+  color: var(--cactus-wren);
 }
 
 a:hover {
-  color: #7e3227;
+  color: var(--red-hawk);
+}
+
+a.dark-mode:hover {
+  color: var(--toucan);
 }
 
 @media (prefers-color-scheme: dark) {
   .page-not-found {
-    border-color: #aba18c;
+    border-color: var(--cactus-wren);
+  }
+
+  .page-not-found.light-mode {
+    border-color: var(--wren);
   }
 
   a {
-    color: #aba18c;
+    color: var(--cactus-wren);
+  }
+
+  a.light-mode {
+    color: var(--wren);
   }
 
   a:hover {
-    color: #f09651;
+    color: var(--toucan);
+  }
+
+  a.light-mode:hover {
+    color: var(--red-hawk);
   }
 }
 </style>

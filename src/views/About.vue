@@ -2,7 +2,10 @@
 <template>
   <div class="p-grid">
     <div class="p-col">
-      <Accordion v-model:activeIndex="activeIndex">
+      <Accordion
+        v-model:activeIndex="activeIndex"
+        v-on:click="onClickAccordion"
+      >
         <AccordionTab>
           <template #header>
             <i class="pi pi-globe">&nbsp;</i>
@@ -89,7 +92,15 @@ export default {
     AccordionTab,
   },
   props: {
-    msg: String,
+    setMode: Function,
+  },
+  methods: {
+    onClickAccordion() {
+      this.setMode();
+    },
+  },
+  mounted() {
+    this.setMode();
   },
   data() {
     return {
@@ -102,27 +113,44 @@ export default {
 <!--suppress CssUnusedSymbol -->
 <style>
 .p-accordion {
-  background: #aba18c !important;
+  background: var(--cactus-wren) !important;
   font-family: "Source Code Pro", Roboto, sans-serif !important;
+}
+
+.p-accordion.dark-mode {
+  background: var(--wren) !important;
 }
 
 .p-accordion-tab {
   margin-top: 20px;
   border-style: solid;
   border-width: 4px;
-  border-color: #4a4139;
+  border-color: var(--wren) !important;
   border-radius: 5px;
 }
 
+.p-accordion-tab.dark-mode {
+  border-color: var(--cactus-wren) !important;
+}
+
 .p-accordion-tab:hover {
-  border-color: #7e3227;
+  border-color: var(--red-hawk) !important;
+}
+
+.p-accordion-tab.dark-mode:hover {
+  border-color: var(--toucan) !important;
 }
 
 .p-accordion-header-link {
-  background: #aba18c !important;
-  color: #4a4139 !important;
+  background: var(--cactus-wren) !important;
+  color: var(--wren) !important;
   border: none !important;
   border-radius: 0 !important;
+}
+
+.p-accordion-header-link.dark-mode {
+  background: var(--wren) !important;
+  color: var(--cactus-wren) !important;
 }
 
 .p-accordion-header-link:focus {
@@ -132,66 +160,133 @@ export default {
 .p-accordion-content {
   text-align: left;
   font-size: 14pt;
-  background: #aba18c !important;
-  color: #4a4139 !important;
+  background: var(--cactus-wren) !important;
+  color: var(--wren) !important;
   border: none !important;
+}
+
+.p-accordion-content.dark-mode {
+  background: var(--wren) !important;
+  color: var(--cactus-wren) !important;
 }
 
 .p-accordion-tab:hover > .p-accordion-header .p-accordion-header-link,
 .p-accordion-tab-active:hover > .p-accordion-header .p-accordion-header-link {
-  color: #7e3227 !important;
+  color: var(--red-hawk) !important;
+}
+
+.p-accordion-tab:hover > .p-accordion-header .p-accordion-header-link.dark-mode,
+.p-accordion-tab-active:hover
+  > .p-accordion-header
+  .p-accordion-header-link.dark-mode {
+  color: var(--toucan) !important;
 }
 
 a {
-  color: #4a4139;
+  color: var(--wren) !important;
+}
+
+a.dark-mode {
+  color: var(--cactus-wren) !important;
 }
 
 a:hover {
-  color: #7e3227 !important;
+  color: var(--red-hawk) !important;
+}
+
+a.dark-mode:hover {
+  color: var(--toucan) !important;
 }
 
 a:visited {
-  color: #4f859f;
+  color: #4f859f !important;
+}
+
+a.dark-mode:visited {
+  color: #aac4e2 !important;
 }
 
 @media (prefers-color-scheme: dark) {
   .p-accordion {
-    background: #4a4139 !important;
+    background: var(--wren) !important;
+  }
+
+  .p-accordion.light-mode {
+    background: var(--cactus-wren) !important;
   }
 
   .p-accordion-tab {
-    border-color: #aba18c;
+    border-color: var(--cactus-wren) !important;
+  }
+
+  .p-accordion-tab.light-mode {
+    border-color: var(--wren) !important;
   }
 
   .p-accordion-tab:hover {
-    border-color: #f09651;
+    border-color: var(--toucan) !important;
+  }
+
+  .p-accordion-tab.light-mode:hover {
+    border-color: var(--red-hawk) !important;
   }
 
   .p-accordion-header-link {
-    background: #4a4139 !important;
-    color: #aba18c !important;
+    background: var(--wren) !important;
+    color: var(--cactus-wren) !important;
+  }
+
+  .p-accordion-header-link.light-mode {
+    background: var(--cactus-wren) !important;
+    color: var(--wren) !important;
   }
 
   .p-accordion-content {
-    background: #4a4139 !important;
-    color: #aba18c !important;
+    background: var(--wren) !important;
+    color: var(--cactus-wren) !important;
+  }
+
+  .p-accordion-content.light-mode {
+    background: var(--cactus-wren) !important;
+    color: var(--wren) !important;
   }
 
   .p-accordion-tab:hover > .p-accordion-header .p-accordion-header-link,
   .p-accordion-tab-active:hover > .p-accordion-header .p-accordion-header-link {
-    color: #f09651 !important;
+    color: var(--toucan) !important;
+  }
+
+  .p-accordion-tab:hover
+    > .p-accordion-header
+    .p-accordion-header-link.light-mode,
+  .p-accordion-tab-active:hover
+    > .p-accordion-header
+    .p-accordion-header-link.light-mode {
+    color: var(--red-hawk) !important;
   }
 
   a {
-    color: #aba18c;
+    color: var(--cactus-wren) !important;
+  }
+
+  a.light-mode {
+    color: var(--wren) !important;
   }
 
   a:hover {
-    color: #f09651 !important;
+    color: var(--toucan) !important;
+  }
+
+  a.light-mode:hover {
+    color: var(--red-hawk) !important;
   }
 
   a:visited {
-    color: #aac4e2;
+    color: #aac4e2 !important;
+  }
+
+  a.light-mode:visited {
+    color: #4f859f !important;
   }
 }
 </style>

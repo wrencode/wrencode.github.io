@@ -49,6 +49,10 @@ export default {
   fill: #4a4139;
 }
 
+.wrencode-logo.dark-mode {
+  fill: #aba18c !important;
+}
+
 /*.wrencode-logo:hover {*/
 /*  fill: saddlebrown;*/
 /*}*/
@@ -56,6 +60,10 @@ export default {
 @media (prefers-color-scheme: dark) {
   .wrencode-logo {
     fill: #aba18c;
+  }
+
+  .wrencode-logo.light-mode {
+    fill: #4a4139 !important;
   }
 
   /*.wrencode-logo:hover {*/

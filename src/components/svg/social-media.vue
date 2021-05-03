@@ -231,6 +231,10 @@ a {
   margin: 5px;
 }
 
+a.dark-mode {
+  color: #aba18c;
+}
+
 svg {
   fill: #4a4139;
   width: 75px;
@@ -238,11 +242,19 @@ svg {
   transition: transform 0.2s; /* Animation */
 }
 
+svg.dark-mode {
+  fill: #aba18c;
+}
+
 svg:hover {
   fill: #7e3227;
   transform: scale(
     1.25
   ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+svg.dark-mode:hover {
+  fill: #f09651;
 }
 
 /* needed for the internal parts of the instagram icon */
@@ -256,8 +268,16 @@ svg:hover {
     fill: #aba18c;
   }
 
+  svg.light-mode {
+    fill: #4a4139;
+  }
+
   svg:hover path {
     fill: #f09651;
+  }
+
+  svg.light-mode:hover path {
+    fill: #7e3227;
   }
 }
 </style>

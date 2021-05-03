@@ -2,7 +2,7 @@
   <div class="home">
     <Confetti id="surprise" :class="getSurpriseClass(surprise)" />
     <a href="/">
-      <WrencodeLogo id="wrencode-logo" />
+      <WrencodeLogo id="wrencode-logo" class="bring-to-front-of-bg-img" />
       <!--suppress CheckImageSize -->
       <img
         :class="getSurpriseClass(surprise)"
@@ -13,12 +13,12 @@
         v-tooltip.top="'It\'s time for a dance party!'"
       />
     </a>
-    <p>
+    <p class="bring-to-front-of-bg-img">
       Wrencode, LLC focuses on the implementation and optimization of modern
       technology to help you soar to new heights!
     </p>
-    <h3>Find Wrencode at:</h3>
-    <SocialMedia />
+    <h3 class="bring-to-front-of-bg-img">Find Wrencode at:</h3>
+    <SocialMedia class="bring-to-front-of-bg-img" />
   </div>
 </template>
 
@@ -34,13 +34,8 @@ export default {
     SocialMedia,
     Confetti,
   },
-  beforeCreate() {
-    this.resetSurprise();
-  },
-  unmounted() {
-    this.resetSurprise();
-  },
   props: {
+    setMode: Function,
     surprise: Boolean,
     resetSurprise: Function,
   },
@@ -56,8 +51,17 @@ export default {
           .getElementById("wrencode-logo")
           ?.classList.remove(surpriseClass);
       }
-      return surpriseClass;
+      return surpriseClass + " bring-to-front-of-bg-img";
     },
+  },
+  beforeCreate() {
+    this.resetSurprise();
+  },
+  mounted() {
+    this.setMode();
+  },
+  unmounted() {
+    this.resetSurprise();
   },
 };
 </script>
@@ -68,6 +72,19 @@ export default {
   text-align: center;
 }
 
+.home:before {
+  content: "";
+  background-image: url("../assets/images/banners/wrencode-banner.png");
+  background-size: cover;
+  position: absolute;
+  top: 65px;
+  right: 0;
+  /*bottom: 20vh;*/
+  bottom: 15vh;
+  left: 0;
+  opacity: 0.25;
+}
+
 #wrencode-logo {
   width: 30%;
   min-width: 250px;
@@ -75,6 +92,10 @@ export default {
 
 h3 {
   margin: 40px 0 0;
+}
+
+.bring-to-front-of-bg-img {
+  position: relative;
 }
 
 .hide {

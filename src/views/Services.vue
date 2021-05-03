@@ -3,7 +3,12 @@
   <div class="p-grid">
     <div class="p-col">
       <div class="chart-container">
-        <Chart type="doughnut" :data="chartData" :options="options" />
+        <Chart
+          type="doughnut"
+          :data="chartData"
+          :options="options"
+          :key="darkMode"
+        />
       </div>
     </div>
   </div>
@@ -23,7 +28,7 @@ export default {
     Chart,
   },
   props: {
-    msg: String,
+    darkMode: Boolean,
   },
   methods: {
     getServices() {
@@ -88,20 +93,6 @@ export default {
     },
   },
   data() {
-    let darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    let colorSchemeFontColor = "#4a4139";
-    let colorSchemeBorderColor = "#aba18c";
-    let colorSchemeHoverBorderColor = "#7e3227";
-    let colorSchemeBackgroundColor = "rgba(256, 256, 256, 0.75)";
-    if (darkMode) {
-      colorSchemeFontColor = "#aba18c";
-      colorSchemeBorderColor = "#4a4139";
-      colorSchemeHoverBorderColor = "#f09651";
-      colorSchemeBackgroundColor = "rgba(0, 0, 0, 0.75)";
-    }
-
-    // noinspection JSUnusedLocalSymbols
     return {
       chartData: {
         labels: this.getServicesLabels(),
@@ -116,17 +107,51 @@ export default {
             data: this.getServicesValues(),
             // data: [40, 25, 20, 15],
             backgroundColor: [
-              "rgba(79, 133, 159, 0.75)",
-              "rgba(209,242,235,0.75)",
-              "rgba(120, 82, 88, 0.75)",
-              "rgba(170, 196, 226, 0.75)",
-            ], // jay bird, humming bird, falcon, blue bird
-            hoverBackgroundColor: ["#4f859f", "#d1f2eb", "#785258", "#aac4e2"],
+              "rgba(79, 133, 159, 0.75)", // jay bird
+              "rgba(209,242,235,0.75)", // humming bird
+              "rgba(120, 82, 88, 0.75)", // falcon
+              "rgba(170, 196, 226, 0.75)", // blue bird
+            ],
+            hoverBackgroundColor: [
+              "#4f859f", // jay bird
+              "#d1f2eb", // humming bird
+              "#785258", // falcon
+              "#aac4e2", // blue bird
+            ],
           },
         ],
       },
       plugins: [ChartDataLabels],
-      options: {
+    };
+  },
+  computed: {
+    options() {
+      let darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      let darkModeSelected = false;
+      let lightModeSelected = false;
+      if (this.darkMode) {
+        if (document.getElementById("app").classList.contains("dark-mode")) {
+          darkModeSelected = true;
+        }
+      } else {
+        if (document.getElementById("app").classList.contains("light-mode")) {
+          lightModeSelected = true;
+        }
+      }
+
+      let colorSchemeFontColor = "#4a4139";
+      let colorSchemeBorderColor = "#aba18c";
+      let colorSchemeHoverBorderColor = "#7e3227";
+      let colorSchemeBackgroundColor = "rgba(256, 256, 256, 0.75)";
+      if ((darkMode || darkModeSelected) && !lightModeSelected) {
+        colorSchemeFontColor = "#aba18c";
+        colorSchemeBorderColor = "#4a4139";
+        colorSchemeHoverBorderColor = "#f09651";
+        colorSchemeBackgroundColor = "rgba(0, 0, 0, 0.75)";
+      }
+
+      return {
         responsive: true,
         maintainAspectRatio: false,
         hoverMode: "index",
@@ -211,8 +236,8 @@ export default {
             },
           },
         },
-      },
-    };
+      };
+    },
   },
 };
 </script>

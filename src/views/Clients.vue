@@ -47,7 +47,10 @@ export default {
     Card,
   },
   props: {
-    msg: String,
+    setMode: Function,
+  },
+  mounted() {
+    this.setMode();
   },
   data: () => ({
     client_1: "https://www.strivedigital.org",
@@ -80,15 +83,27 @@ export default {
 }
 
 .p-card-title > a {
-  color: #4a4139;
+  color: var(--wren);
+}
+
+.p-card-title > a.dark-mode {
+  color: var(--cactus-wren);
 }
 
 .p-card-title > a:hover {
-  color: #7e3227 !important;
+  color: var(--red-hawk) !important;
+}
+
+.p-card-title > a.dark-mode:hover {
+  color: var(--toucan) !important;
 }
 
 .p-card-title > a:visited {
   color: #4f859f;
+}
+
+.p-card-title > a.dark-mode:visited {
+  color: #aac4e2;
 }
 
 .container {
@@ -99,7 +114,7 @@ export default {
 }
 
 .client-thumbnail {
-  background: #aba18c;
+  background: var(--cactus-wren);
   position: absolute;
   top: 0;
   left: 0;
@@ -108,21 +123,41 @@ export default {
   border: 0;
 }
 
+.client-thumbnail.dark-mode {
+  background: var(--wren);
+}
+
 @media (prefers-color-scheme: dark) {
   .p-card-title > a {
-    color: #aba18c;
+    color: var(--cactus-wren);
+  }
+
+  .p-card-title > a.light-mode {
+    color: var(--wren);
   }
 
   .p-card-title > a:hover {
-    color: #f09651 !important;
+    color: var(--toucan) !important;
+  }
+
+  .p-card-title > a.light-mode:hover {
+    color: var(--red-hawk) !important;
   }
 
   .p-card-title > a:visited {
     color: #aac4e2;
   }
 
+  .p-card-title > a.light-mode:visited {
+    color: #4f859f;
+  }
+
   .client-thumbnail {
-    background: #4a4139;
+    background: var(--wren);
+  }
+
+  .client-thumbnail.light-mode {
+    background: var(--cactus-wren);
   }
 }
 </style>

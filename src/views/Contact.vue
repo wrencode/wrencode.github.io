@@ -134,7 +134,10 @@ export default {
     Card,
   },
   props: {
-    msg: String,
+    setMode: Function,
+  },
+  mounted() {
+    this.setMode();
   },
 };
 </script>
@@ -162,25 +165,38 @@ li {
 }
 
 svg {
-  fill: #4a4139;
+  fill: var(--wren);
   width: 75px;
   height: 75px;
   transition: transform 0.2s; /* Animation */
 }
 
+svg.dark-mode {
+  fill: var(--cactus-wren);
+}
+
 svg:hover {
-  fill: #7e3227;
+  fill: var(--red-hawk);
   transform: scale(
     1.25
   ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+svg.dark-mode:hover {
+  fill: var(--toucan);
 }
 
 /* needed for the internal parts of the email icon */
 .cls-1,
 .cls-2 {
   fill: none;
-  stroke: #aba18c;
+  stroke: var(--cactus-wren);
   stroke-width: 3px;
+}
+
+.cls-1.dark-mode,
+.cls-2.dark-mode {
+  stroke: var(--wren);
 }
 
 .cls-1 {
@@ -193,16 +209,29 @@ svg:hover {
 
 @media (prefers-color-scheme: dark) {
   svg {
-    fill: #aba18c;
+    fill: var(--cactus-wren);
+  }
+
+  svg.light-mode {
+    fill: var(--wren);
   }
 
   svg:hover path {
-    fill: #f09651;
+    fill: var(--toucan);
+  }
+
+  svg:hover path.light-mode {
+    fill: var(--red-hawk);
   }
 
   .cls-1,
   .cls-2 {
-    stroke: #4a4139;
+    stroke: var(--wren);
+  }
+
+  .cls-1.light-mode,
+  .cls-2.light-mode {
+    stroke: var(--cactus-wren);
   }
 }
 </style>
