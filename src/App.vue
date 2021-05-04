@@ -203,10 +203,6 @@ export default {
       let app = document.getElementById("app");
       app.style.minWidth = "960px";
 
-      document
-        .getElementsByClassName("view")
-        .forEach((elem) => (elem.style.minWidth = "960px"));
-
       document.getElementsByClassName("p-menubar").forEach((elem) => {
         elem.style.position = "absolute";
         elem.style.minWidth = "960px";

@@ -1,5 +1,5 @@
 <template>
-  <div class="home view">
+  <div class="home">
     <Confetti id="surprise" :class="getSurpriseClass(surprise)" />
     <a href="/">
       <WrencodeLogo id="wrencode-logo" class="bring-to-front-of-bg-img" />
