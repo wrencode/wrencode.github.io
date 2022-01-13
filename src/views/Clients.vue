@@ -3,34 +3,52 @@
     <div class="p-col">
       <Fieldset :toggleable="false" :collapsed="false">
         <template #legend> Clients </template>
-        <Card class="client-card">
+        <Card class="client-card" v-tooltip.top="'Go to strivemessaging.org'">
           <template #header>
             <a :href="client_1" target="_blank" rel="noopener">
               <StriveMessagingLogo class="client-logo" />
             </a>
           </template>
-          <template #title>
-            <a :href="client_1" target="_blank" rel="noopener"
-              >Message Your Movement</a
-            >
-          </template>
+          <template #title> Message Your Movement </template>
           <template #content>
             <p>
               <i>
-                Strive is the broadcast texting tool made for nonprofits, and
-                campaigns to activate their supporters. Strive is a powerful
-                broadcast texting tool used by organizations and campaigns
-                around the world. We make it easy to scale your messaging while
-                building relationships with your movement.
+                Strive is the broadcast texting tool made for nonprofits, and campaigns to activate their supporters.
+                Strive is a powerful broadcast texting tool used by organizations and campaigns around the world. We
+                make it easy to scale your messaging while building relationships with your movement.
               </i>
             </p>
             <p>
               <i>
-                Grow your base, mobilize your supporters, and deepen connections
-                — all in one place. We’re innovating what texting can do, so
-                your messages always make an impact.
+                Grow your base, mobilize your supporters, and deepen — all in one place. We’re innovating what texting
+                can do, so your messages always make an impact.
               </i>
             </p>
+            <div class="container">
+              <p><b>Completed & Ongoing Projects</b></p>
+              <ul>
+                <li>
+                  Hiring
+                  <ul>
+                    <li>Technical screening and interviewing</li>
+                  </ul>
+                </li>
+                <li>
+                  Website & platform migration and deployment
+                  <ul>
+                    <li>JavaScript: Node.js, React</li>
+                    <li>AWS: Route 54, S3, CodePipeline, CloudFront, AWS Certificate Manager</li>
+                  </ul>
+                </li>
+                <li>
+                  Security Compliance
+                  <ul>
+                    <li>SOC 2 research</li>
+                    <li>Implementation of development & architecture best practices</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
           </template>
         </Card>
         <!--<Card class="client-card">-->
@@ -137,12 +155,16 @@ export default {
   text-align: left;
 }
 
-/*.container {*/
-/*  position: relative;*/
-/*  overflow: hidden;*/
-/*  padding-top: 70%;*/
-/*  text-align: center;*/
-/*}*/
+.container {
+  position: relative;
+  overflow: hidden;
+  /*padding-top: 70%;*/
+  text-align: center;
+}
+
+ul {
+  text-align: left;
+}
 
 .client-logo {
   padding: 5%;

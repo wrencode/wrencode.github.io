@@ -44,6 +44,13 @@
     },
     "rules": {}
   },
+  "prettier": {
+    "trailingComma": "all",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": false,
+    "printWidth": 120
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions",

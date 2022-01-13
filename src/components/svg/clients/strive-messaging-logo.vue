@@ -40,18 +40,24 @@ export default {
 </script>
 
 <style scoped>
-svg {
-  fill: var(--wren);
-  width: 90%;
-  height: 90%;
-}
-
 .strive-messaging-logo {
   fill: #2750fc;
+  width: 90%;
+  height: 90%;
+  transition: transform 0.2s; /* Animation */
 }
 
 .strive-messaging-logo.dark-mode {
-  fill: #c3cdfb !important;
+  fill: #c3cdfb;
+}
+
+.strive-messaging-logo:hover {
+  fill: #c3cdfb;
+  transform: scale(1.1);
+}
+
+.strive-messaging-logo.dark-mode:hover {
+  fill: #2750fc;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,7 +66,15 @@ svg {
   }
 
   .strive-messaging-logo.light-mode {
-    fill: #2750fc !important;
+    fill: #2750fc;
+  }
+
+  .strive-messaging-logo:hover {
+    fill: #2750fc;
+  }
+
+  .strive-messaging-logo.light-mode:hover {
+    fill: #c3cdfb;
   }
 }
 </style>

@@ -14,8 +14,7 @@
       />
     </a>
     <p class="bring-to-front-of-bg-img">
-      Wrencode, LLC focuses on the implementation and optimization of modern
-      technology to help you soar to new heights!
+      Wrencode, LLC focuses on the implementation and optimization of modern technology to help you soar to new heights!
     </p>
     <h3 class="bring-to-front-of-bg-img">Find Wrencode at:</h3>
     <SocialMedia class="bring-to-front-of-bg-img" />
@@ -47,9 +46,7 @@ export default {
         document.getElementById("wrencode-logo")?.classList.add(surpriseClass);
         surpriseClass = "show";
         document.getElementById("surprise")?.classList.add(surpriseClass);
-        document
-          .getElementById("wrencode-logo")
-          ?.classList.remove(surpriseClass);
+        document.getElementById("wrencode-logo")?.classList.remove(surpriseClass);
       }
       return surpriseClass + " bring-to-front-of-bg-img";
     },

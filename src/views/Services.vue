@@ -3,12 +3,7 @@
   <div class="p-grid">
     <div class="p-col">
       <div class="chart-container">
-        <Chart
-          type="doughnut"
-          :data="chartData"
-          :options="options"
-          :key="darkMode"
-        />
+        <Chart type="doughnut" :data="chartData" :options="options" :key="darkMode" />
       </div>
     </div>
   </div>
@@ -228,9 +223,7 @@ export default {
             borderRadius: 5,
             backgroundColor: colorSchemeBorderColor,
             formatter: (value, context) => {
-              return (
-                this.getServicesAbbrs()[context.dataIndex] + ": " + value + "%"
-              );
+              return this.getServicesAbbrs()[context.dataIndex] + ": " + value + "%";
               // return context.chart.data.labels[context.dataIndex] + "\n" + value + "%"
               // return value + "%"
             },

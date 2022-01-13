@@ -40,12 +40,7 @@
     </Menubar>
     <br />
     <br />
-    <router-view
-      :darkMode="darkMode"
-      :setMode="setMode"
-      :surprise="surprise"
-      :resetSurprise="resetSurprise"
-    />
+    <router-view :darkMode="darkMode" :setMode="setMode" :surprise="surprise" :resetSurprise="resetSurprise" />
   </div>
   <Button
     label="Back to Top"
@@ -165,9 +160,7 @@ export default {
         menubarItem.classList.remove("menubar-item-active");
       }
 
-      let selectedMenubarItem = document
-        .getElementsByClassName(`menubar-item-${menubarItemName}`)
-        .item(0);
+      let selectedMenubarItem = document.getElementsByClassName(`menubar-item-${menubarItemName}`).item(0);
       selectedMenubarItem.classList.add("menubar-item-active");
     },
     // isCompact() {
@@ -191,13 +184,9 @@ export default {
       }
     },
     showDesktopView() {
-      let menubarDesktopViewButton = document.getElementById(
-        "menubar-desktop-view-button"
-      );
+      let menubarDesktopViewButton = document.getElementById("menubar-desktop-view-button");
       menubarDesktopViewButton.classList.add("hide-button");
-      let menubarMobileViewButton = document.getElementById(
-        "menubar-mobile-view-button"
-      );
+      let menubarMobileViewButton = document.getElementById("menubar-mobile-view-button");
       menubarMobileViewButton.classList.remove("hide-button");
 
       let app = document.getElementById("app");
@@ -208,26 +197,18 @@ export default {
         elem.style.minWidth = "960px";
         elem.style.padding = "0.5rem";
       });
-      document
-        .getElementsByClassName("p-menubar-button")
-        .forEach((elem) => (elem.style.display = "none"));
+      document.getElementsByClassName("p-menubar-button").forEach((elem) => (elem.style.display = "none"));
       document.getElementsByClassName("p-menubar-root-list").forEach((elem) => {
         elem.style.position = "relative";
         elem.style.display = "inline-flex";
         elem.style.boxShadow = "none";
       });
-      document
-        .getElementsByClassName("p-menuitem")
-        .forEach((elem) => (elem.style.width = "initial"));
+      document.getElementsByClassName("p-menuitem").forEach((elem) => (elem.style.width = "initial"));
     },
     showMobileView() {
-      let menubarDesktopViewButton = document.getElementById(
-        "menubar-desktop-view-button"
-      );
+      let menubarDesktopViewButton = document.getElementById("menubar-desktop-view-button");
       menubarDesktopViewButton.classList.remove("hide-button");
-      let menubarMobileViewButton = document.getElementById(
-        "menubar-mobile-view-button"
-      );
+      let menubarMobileViewButton = document.getElementById("menubar-mobile-view-button");
       menubarMobileViewButton.classList.add("hide-button");
 
       let app = document.getElementById("app");
@@ -238,27 +219,19 @@ export default {
         elem.style.removeProperty("min-width");
         elem.style.removeProperty("padding");
       });
-      document
-        .getElementsByClassName("p-menubar-button")
-        .forEach((elem) => elem.style.removeProperty("display"));
+      document.getElementsByClassName("p-menubar-button").forEach((elem) => elem.style.removeProperty("display"));
       document.getElementsByClassName("p-menubar-root-list").forEach((elem) => {
         elem.style.removeProperty("position");
         elem.style.removeProperty("display");
         elem.style.removeProperty("box-shadow");
       });
-      document
-        .getElementsByClassName("p-menuitem")
-        .forEach((elem) => elem.style.removeProperty("width"));
+      document.getElementsByClassName("p-menuitem").forEach((elem) => elem.style.removeProperty("width"));
     },
     getYear() {
       return new Date().getFullYear();
     },
     freezeScroll(e) {
-      if (
-        keySequence[0] === "ArrowUp" &&
-        keySequence[1] === "ArrowUp" &&
-        e.key === "ArrowDown"
-      ) {
+      if (keySequence[0] === "ArrowUp" && keySequence[1] === "ArrowUp" && e.key === "ArrowDown") {
         e.preventDefault();
       }
     },
@@ -326,9 +299,7 @@ export default {
           class: "menubar-item menubar-item-contact",
         },
       ],
-      darkMode:
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches,
+      darkMode: window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches,
       surprise: false,
     };
   },
@@ -351,9 +322,7 @@ export default {
 
 @font-face {
   font-family: "Source Code Pro";
-  src: local("Source Code Pro"),
-    url("./assets/fonts/SourceCodePro/SourceCodePro-Regular.ttf")
-      format("truetype");
+  src: local("Source Code Pro"), url("./assets/fonts/SourceCodePro/SourceCodePro-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }

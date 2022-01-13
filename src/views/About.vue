@@ -2,34 +2,25 @@
 <template>
   <div class="p-grid">
     <div class="p-col">
-      <Accordion
-        v-model:activeIndex="activeIndex"
-        v-on:click="onClickAccordion"
-      >
+      <Accordion v-model:activeIndex="activeIndex" v-on:click="onClickAccordion">
         <AccordionTab>
           <template #header>
             <i class="pi pi-globe">&nbsp;</i>
             <span>History</span>
           </template>
           <p>
-            Wrencode, LLC was founded in March of 2021 by Wren Rudolph to
-            support his side job as an independent technical consultant. In this
-            capacity he provides software engineering services, machine learning
-            and natural language processing expertise, as well as implementation
-            of best practices for software documentation, hiring, team-building,
-            and agile software development.
+            Wrencode, LLC was founded in March of 2021 by Wren Rudolph to support his side job as an independent
+            technical consultant. In this capacity he provides software engineering services, machine learning and
+            natural language processing expertise, as well as implementation of best practices for software
+            documentation, hiring, team-building, and agile software development.
           </p>
           <p>
-            Wren is a software engineer by trade, with many years of experience
-            in the tech government contracting space building applications for
-            the intelligence community. Wren completed his undergraduate studies
-            at the College of William & Mary, where he double-majored in applied
-            mathematics and linguistics. The intersection of these areas of
-            interest subsequently led to his discovery of computational
-            linguistics, which in turn introduced him to the worlds of natural
-            language processing, machine learning, and artificial intelligence.
-            Wren now works as a Senior Machine Learning Engineer for a FinTech
-            startup called Botkeeper.
+            Wren is a software engineer by trade, with many years of experience in the tech government contracting space
+            building applications for the intelligence community. Wren completed his undergraduate studies at the
+            College of William & Mary, where he double-majored in applied mathematics and linguistics. The intersection
+            of these areas of interest subsequently led to his discovery of computational linguistics, which in turn
+            introduced him to the worlds of natural language processing, machine learning, and artificial intelligence.
+            Wren now works as a Senior Machine Learning Engineer for a FinTech startup called Botkeeper.
           </p>
         </AccordionTab>
         <AccordionTab>
@@ -38,10 +29,9 @@
             <span>Roadmap</span>
           </template>
           <p>
-            Wrencode, LLC is a privately-owned, single-member LLC. At the
-            present time the company exists exclusively to provide technical
-            consulting services, and as such there are currently no expected
-            upcoming milestones for the growth and development of the company.
+            Wrencode, LLC is a privately-owned, single-member LLC. At the present time the company exists exclusively to
+            provide technical consulting services, and as such there are currently no expected upcoming milestones for
+            the growth and development of the company.
           </p>
         </AccordionTab>
         <AccordionTab>
@@ -52,27 +42,21 @@
           <p>
             <b>Q: Are you hiring?</b>
             <br />
-            <i
-              >A: No, Wrencode is a single-member LLC, and is not currently in
-              need of any services.</i
-            >
+            <i>A: No, Wrencode is a single-member LLC, and is not currently in need of any services.</i>
             <br /><br />
             <b>Q: Are you looking for additional clients?</b>
             <br />
             <i
-              >A: No, at the present time Wrencode is not accepting new
-              clients.</i
+              >A: At the present time Wrencode is not actively seeking new clients, but please contact
+              <a href="/contact">Wren Rudolph</a> to discuss available opportunities.</i
             >
             <br /><br />
-            <b
-              >Q: Do you provide additional technical services besides those
-              listed above?</b
-            >
+            <b>Q: Do you provide additional technical services besides those listed?</b>
             <br />
             <i
-              >A: Yes, Wrencode is open to a variety of technical services
-              beyond those previously specified. Please reach out to
-              <a href="/contact">Wren Rudolph</a> with any inquiries.
+              >A: Yes, Wrencode is open to a variety of technical services beyond those explicitly specified in
+              <a href="/services">Services</a>. Please reach out to <a href="/contact">Wren Rudolph</a> with any
+              inquiries.
             </i>
           </p>
         </AccordionTab>
@@ -176,9 +160,7 @@ export default {
 }
 
 .p-accordion-tab:hover > .p-accordion-header .p-accordion-header-link.dark-mode,
-.p-accordion-tab-active:hover
-  > .p-accordion-header
-  .p-accordion-header-link.dark-mode {
+.p-accordion-tab-active:hover > .p-accordion-header .p-accordion-header-link.dark-mode {
   color: var(--toucan) !important;
 }
 
@@ -256,12 +238,8 @@ a.dark-mode:visited {
     color: var(--toucan) !important;
   }
 
-  .p-accordion-tab:hover
-    > .p-accordion-header
-    .p-accordion-header-link.light-mode,
-  .p-accordion-tab-active:hover
-    > .p-accordion-header
-    .p-accordion-header-link.light-mode {
+  .p-accordion-tab:hover > .p-accordion-header .p-accordion-header-link.light-mode,
+  .p-accordion-tab-active:hover > .p-accordion-header .p-accordion-header-link.light-mode {
     color: var(--red-hawk) !important;
   }
 
