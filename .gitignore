@@ -1,7 +1,15 @@
+# macOS
 .DS_Store
-node_modules
-/dist
 
+# node
+node_modules/
+
+# yarn
+.yarn/*
+.yarnrc.yml
+
+# build
+/dist
 
 # local env files
 .env.local
@@ -13,11 +21,5 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Editor directories and files
+# JetBrains
 .idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?

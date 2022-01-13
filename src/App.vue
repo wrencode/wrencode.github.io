@@ -92,11 +92,11 @@ let keySequence = [];
 export default {
   name: "App",
   components: {
-    SocialMedia,
     Menubar,
     ToggleButton,
     Button,
     WrencodeLogo,
+    SocialMedia,
   },
   created() {
     window.addEventListener("scroll", this.onScroll);

@@ -1,10 +1,10 @@
 {
   "name": "wrencode.github.io",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build; find ./docs ! -name 'CNAME' -type f -exec rm -f {} +; cp -r dist/* docs/",
+    "build": "vue-cli-service build; find ./docs ! -name 'CNAME' -type f -exec rm -f '{}' +; cp -r dist/* docs/",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -48,5 +48,6 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "packageManager": "yarn@3.1.1"
 }

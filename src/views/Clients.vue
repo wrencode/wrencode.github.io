@@ -4,26 +4,53 @@
       <Fieldset :toggleable="false" :collapsed="false">
         <template #legend> Clients </template>
         <Card class="client-card">
+          <template #header>
+            <a :href="client_1" target="_blank" rel="noopener">
+              <StriveMessagingLogo class="client-logo" />
+            </a>
+          </template>
           <template #title>
             <a :href="client_1" target="_blank" rel="noopener"
-              >Strive Digital</a
+              >Message Your Movement</a
             >
           </template>
           <template #content>
-            <div class="container">
-              <iframe
-                :src="client_1"
-                allowfullscreen
-                allowtransparency="true"
-                class="client-thumbnail"
-              ></iframe>
-            </div>
+            <p>
+              <i>
+                Strive is the broadcast texting tool made for nonprofits, and
+                campaigns to activate their supporters. Strive is a powerful
+                broadcast texting tool used by organizations and campaigns
+                around the world. We make it easy to scale your messaging while
+                building relationships with your movement.
+              </i>
+            </p>
+            <p>
+              <i>
+                Grow your base, mobilize your supporters, and deepen connections
+                — all in one place. We’re innovating what texting can do, so
+                your messages always make an impact.
+              </i>
+            </p>
           </template>
         </Card>
-        <!--<div style="width: 2%; display: inline-block"/>-->
         <!--<Card class="client-card">-->
         <!--  <template #title>-->
-        <!--    <a :href="client_1">Strive Digital</a>-->
+        <!--    <a :href="client_1" target="_blank" rel="noopener">Strive Messaging</a>-->
+        <!--  </template>-->
+        <!--  <template #content>-->
+        <!--    <div class="container">-->
+        <!--      <iframe-->
+        <!--        :src="client_1"-->
+        <!--        allowfullscreen-->
+        <!--        allowtransparency="true"-->
+        <!--        class="client-thumbnail"-->
+        <!--      ></iframe>-->
+        <!--    </div>-->
+        <!--  </template>-->
+        <!--</Card>-->
+        <!--<Card class="client-card">-->
+        <!--  <template #title>-->
+        <!--    <a :href="client_1" target="_blank" rel="noopener">Strive Messaging</a>-->
         <!--  </template>-->
         <!--  <template #content>-->
         <!--    <div class="container">-->
@@ -39,12 +66,14 @@
 <script>
 import Fieldset from "primevue/fieldset";
 import Card from "primevue/card";
+import StriveMessagingLogo from "@/components/svg/clients/strive-messaging-logo";
 
 export default {
   name: "Clients",
   components: {
     Fieldset,
     Card,
+    StriveMessagingLogo,
   },
   props: {
     setMode: Function,
@@ -53,7 +82,7 @@ export default {
     this.setMode();
   },
   data: () => ({
-    client_1: "https://www.strivedigital.org",
+    client_1: "https://www.strivemessaging.org",
   }),
 };
 </script>
@@ -66,15 +95,13 @@ export default {
 
 .p-fieldset {
   display: inline-block;
-  width: 100%;
 }
 
 .client-card {
   text-align: center;
-  /*width: 49%;*/
-  width: 100%;
-  height: 100%;
+  max-width: 500px;
   display: inline-block;
+  margin: 10px;
 }
 
 .client-card:hover {
@@ -106,26 +133,34 @@ export default {
   color: #aac4e2;
 }
 
-.container {
-  position: relative;
-  overflow: hidden;
-  padding-top: 70%;
-  text-align: center;
+.p-card-content > p {
+  text-align: left;
 }
 
-.client-thumbnail {
-  background: var(--cactus-wren);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
+/*.container {*/
+/*  position: relative;*/
+/*  overflow: hidden;*/
+/*  padding-top: 70%;*/
+/*  text-align: center;*/
+/*}*/
+
+.client-logo {
+  padding: 5%;
 }
 
-.client-thumbnail.dark-mode {
-  background: var(--wren);
-}
+/*.client-thumbnail {*/
+/*  background: var(--cactus-wren);*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  border: 0;*/
+/*}*/
+
+/*.client-thumbnail.dark-mode {*/
+/*  background: var(--wren);*/
+/*}*/
 
 @media (prefers-color-scheme: dark) {
   .p-card-title > a {
@@ -152,12 +187,12 @@ export default {
     color: #4f859f;
   }
 
-  .client-thumbnail {
-    background: var(--wren);
-  }
+  /*.client-thumbnail {*/
+  /*  background: var(--wren);*/
+  /*}*/
 
-  .client-thumbnail.light-mode {
-    background: var(--cactus-wren);
-  }
+  /*.client-thumbnail.light-mode {*/
+  /*  background: var(--cactus-wren);*/
+  /*}*/
 }
 </style>
