@@ -3,11 +3,13 @@
     <div class="p-col">
       <Fieldset :toggleable="false" :collapsed="false">
         <template #legend> Clients </template>
-        <Card class="client-card" v-tooltip.top="'Go to strivemessaging.org'">
+        <Card class="client-card">
           <template #header>
-            <a :href="client_1" target="_blank" rel="noopener">
-              <StriveMessagingLogo class="client-logo" />
-            </a>
+            <div v-tooltip.top="'Go to strivemessaging.org'">
+              <a :href="client_1" target="_blank" rel="noopener">
+                <StriveMessagingLogo class="client-logo" />
+              </a>
+            </div>
           </template>
           <template #title> Message Your Movement </template>
           <template #content>
