@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div id="home" class="home">
     <Confetti id="surprise" :class="getSurpriseClass(surprise)" />
     <a href="/">
       <WrencodeLogo id="wrencode-logo" class="bring-to-front-of-bg-img" />
@@ -17,7 +17,7 @@
       Wrencode, LLC focuses on the implementation and optimization of modern technology to help you soar to new heights!
     </p>
     <h3 class="bring-to-front-of-bg-img">Find Wrencode at:</h3>
-    <SocialMedia class="bring-to-front-of-bg-img" />
+    <SocialMedia id="social-media" class="bring-to-front-of-bg-img" />
   </div>
 </template>
 
@@ -73,13 +73,14 @@ export default {
   content: "";
   background-image: url("../assets/images/banners/wrencode-banner.png");
   background-size: contain;
-  background-repeat: repeat-y;
-  position: absolute;
-  top: 65px;
+  background-repeat: repeat;
+  position: fixed;
+  /*position: absolute;*/
+  top: 0;
   left: 0;
   right: 0;
-  /*bottom: 20vh;*/
-  bottom: 15vh;
+  bottom: 0;
+  margin-bottom: 125px;
   opacity: 0.25;
 }
 
@@ -98,6 +99,10 @@ h3 {
 
 .hide {
   display: none !important;
+}
+
+#surprise {
+  z-index: 900; /* keep the confetti below the menubar (set to z-index: 1000) */
 }
 
 @media (prefers-color-scheme: dark) {

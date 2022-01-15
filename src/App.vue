@@ -194,7 +194,7 @@ export default {
 
       document.getElementsByClassName("p-menubar").forEach((elem) => {
         elem.style.position = "absolute";
-        elem.style.minWidth = "960px";
+        elem.style.minWidth = "970px"; // ten additional pixels to accomodate the 10px right padding of #app
         elem.style.padding = "0.5rem";
       });
       document.getElementsByClassName("p-menubar-button").forEach((elem) => (elem.style.display = "none"));
@@ -329,7 +329,17 @@ export default {
 
 :root {
   --wren: #4a4139;
+  --wren-transparency-80: rgba(74, 65, 57, 0.8);
+  --wren-transparency-75: rgba(74, 65, 57, 0.75);
+  --wren-transparency-70: rgba(74, 65, 57, 0.7);
+  --wren-transparency-50: rgba(74, 65, 57, 0.5);
+  --wren-transparency-25: rgba(74, 65, 57, 0.25);
   --cactus-wren: #aba18c;
+  --cactus-wren-transparency-80: rgba(171, 161, 140, 0.8);
+  --cactus-wren-transparency-75: rgba(171, 161, 140, 0.75);
+  --cactus-wren-transparency-70: rgba(171, 161, 140, 0.7);
+  --cactus-wren-transparency-50: rgba(171, 161, 140, 0.5);
+  --cactus-wren-transparency-25: rgba(171, 161, 140, 0.25);
   --toucan: #f09651;
   --red-hawk: #7e3227;
   --midnight-blue: #191970;
@@ -409,6 +419,7 @@ body {
   width: 100% !important;
   justify-content: space-between;
   box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.25) !important;
+  z-index: 1000; /* keep menubar on top */
 }
 
 .p-menubar:not(.p-menubar-mobile-active) {
@@ -660,7 +671,7 @@ body {
 .p-fieldset {
   font-family: "Source Code Pro", Roboto, sans-serif;
   /*background: var(--wren) !important; !* wren *!*/
-  background: rgba(74, 65, 57, 0.75) !important; /* wren */
+  background: var(--wren-transparency-75) !important;
   display: flex; /* full width of page */
   /*display: inline-block; !* only width of contents *!*/
   justify-content: space-around;
@@ -671,7 +682,7 @@ body {
 }
 
 .p-fieldset.dark-mode {
-  background: rgba(171, 161, 140, 0.75) !important;
+  background: var(--cactus-wren-transparency-75) !important;
   color: var(--cactus-wren);
 }
 
@@ -701,11 +712,11 @@ body {
 }
 
 .p-card-subtitle {
-  color: rgba(74, 65, 57, 0.5) !important; /* wren */
+  color: var(--wren-transparency-50) !important;
 }
 
 .p-card-subtitle.dark-mode {
-  color: rgba(171, 161, 140, 0.5) !important;
+  color: var(--cactus-wren-transparency-50) !important;
 }
 
 #back-to-top-button {
@@ -745,19 +756,19 @@ body {
 }
 
 .p-scrolltop.p-link {
-  background: rgba(74, 65, 57, 0.7) !important;
+  background: var(--wren-transparency-70) !important;
 }
 
 .p-scrolltop.p-link.dark-mode {
-  background: rgba(171, 161, 140, 0.7) !important;
+  background: var(--cactus-wren-transparency-70) !important;
 }
 
 .p-scrolltop.p-link:hover {
-  background: rgba(74, 65, 57, 0.8) !important;
+  background: var(--wren-transparency-80) !important;
 }
 
 .p-scrolltop.p-link.dark-mode:hover {
-  background: rgba(171, 161, 140, 0.8) !important;
+  background: var(--cactus-wren-transparency-80) !important;
 }
 
 .p-scrolltop .p-scrolltop-icon {
@@ -823,37 +834,37 @@ body {
   margin-top: 50px;
   flex-shrink: 0;
   bottom: 0;
-  color: rgba(74, 65, 57, 0.5);
+  color: var(--wren-transparency-50) !important;
   font-size: 8pt !important;
 }
 
 .footer.dark-mode {
-  color: rgba(171, 161, 140, 0.5) !important;
+  color: var(--cactus-wren-transparency-50) !important;
 }
 
 .footer-social-media svg {
-  fill: rgba(74, 65, 57, 0.5) !important;
+  fill: var(--wren-transparency-50) !important;
   width: 25px !important;
   height: 25px !important;
 }
 
 .footer-social-media svg.dark-mode {
-  fill: rgba(171, 161, 140, 0.5) !important;
+  fill: var(--cactus-wren-transparency-50) !important;
 }
 
 .footer-surprise {
   text-align: right !important;
   float: right !important;
   right: 0 !important;
-  bottom: 0 !important;
-  color: rgba(74, 65, 57, 0.25) !important;
+  bottom: -10px !important;
+  color: var(--wren-transparency-25) !important;
   background: transparent !important;
   border: none !important;
   font-size: 6pt !important;
 }
 
 .footer-surprise.dark-mode {
-  color: rgba(171, 161, 140, 0.25) !important;
+  color: var(--cactus-wren-transparency-25) !important;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1002,12 +1013,12 @@ body {
 
   .p-fieldset {
     /*background: var(--cactus-wren); !* cactus wren *!*/
-    background: rgba(171, 161, 140, 0.75) !important;
+    background: var(--cactus-wren-transparency-75) !important;
     color: var(--cactus-wren);
   }
 
   .p-fieldset.light-mode {
-    background: rgba(74, 65, 57, 0.75) !important;
+    background: var(--wren-transparency-75) !important;
     color: var(--wren);
   }
 
@@ -1032,11 +1043,11 @@ body {
   }
 
   .p-card-subtitle {
-    color: rgba(171, 161, 140, 0.5) !important; /* wren */
+    color: var(--cactus-wren-transparency-50) !important;
   }
 
   .p-card-subtitle.light-mode {
-    color: rgba(74, 65, 57, 0.5) !important;
+    color: var(--wren-transparency-50) !important;
   }
 
   #back-to-top-button {
@@ -1064,19 +1075,19 @@ body {
   }
 
   .p-scrolltop.p-link {
-    background: rgba(171, 161, 140, 0.7) !important;
+    background: var(--cactus-wren-transparency-70) !important;
   }
 
   .p-scrolltop.p-link.light-mode {
-    background: rgba(74, 65, 57, 0.7) !important;
+    background: var(--wren-transparency-70) !important;
   }
 
   .p-scrolltop.p-link:hover {
-    background: rgba(171, 161, 140, 0.8) !important;
+    background: var(--cactus-wren-transparency-80) !important;
   }
 
   .p-scrolltop.p-link.light-mode:hover {
-    background: rgba(74, 65, 57, 0.8) !important;
+    background: var(--wren-transparency-80) !important;
   }
 
   .p-scrolltop .p-scrolltop-icon {
@@ -1130,29 +1141,29 @@ body {
   }
 
   .footer {
-    color: rgba(171, 161, 140, 0.5);
+    color: var(--cactus-wren-transparency-50) !important;
   }
 
   .footer.light-mode {
-    color: rgba(74, 65, 57, 0.5) !important;
+    color: var(--wren-transparency-50) !important;
   }
 
   .footer-social-media svg {
-    fill: rgba(171, 161, 140, 0.5) !important;
+    fill: var(--cactus-wren-transparency-50) !important;
     width: 25px !important;
     height: 25px !important;
   }
 
   .footer-social-media svg.light-mode {
-    fill: rgba(74, 65, 57, 0.5) !important;
+    fill: var(--wren-transparency-50) !important;
   }
 
   .footer-surprise {
-    color: rgba(171, 161, 140, 0.25) !important;
+    color: var(--cactus-wren-transparency-25) !important;
   }
 
   .footer-surprise.light-mode {
-    color: rgba(74, 65, 57, 0.25) !important;
+    color: var(--wren-transparency-25) !important;
   }
 }
 </style>
