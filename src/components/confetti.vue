@@ -56,8 +56,8 @@
 
 <script>
 export default {
-  name: "Confetti",
-};
+  name: "Confetti"
+}
 </script>
 
 <style scoped>

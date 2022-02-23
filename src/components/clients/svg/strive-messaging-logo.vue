@@ -2,9 +2,10 @@
 <template>
   <svg
     class="strive-messaging-logo"
-    viewBox="0 0 379 59"
     width="379"
     height="59"
+    viewBox="0 0 379 59"
+    preserveAspectRatio="xMidYMin"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -35,15 +36,16 @@
 
 <script>
 export default {
-  name: "StriveMessagingLogo",
-};
+  name: "StriveMessagingLogo"
+}
 </script>
 
 <style scoped>
 .strive-messaging-logo {
   fill: #2750fc;
-  width: 90%;
-  height: 90%;
+  width: auto;
+  height: var(--logo-height-client);
+  margin-top: 5%;
   transition: transform 0.2s; /* Animation */
 }
 

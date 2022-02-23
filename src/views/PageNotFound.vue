@@ -13,12 +13,12 @@
 export default {
   name: "PageNotFound",
   props: {
-    setMode: Function,
+    setMode: Function
   },
   mounted() {
-    this.setMode();
-  },
-};
+    this.setMode()
+  }
+}
 </script>
 
 <style scoped>

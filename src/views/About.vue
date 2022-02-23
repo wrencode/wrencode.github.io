@@ -66,32 +66,32 @@
 </template>
 
 <script>
-import Accordion from "primevue/accordion";
-import AccordionTab from "primevue/accordiontab";
+import Accordion from "primevue/accordion"
+import AccordionTab from "primevue/accordiontab"
 
 export default {
   name: "About",
   components: {
     Accordion,
-    AccordionTab,
+    AccordionTab
   },
   props: {
-    setMode: Function,
+    setMode: Function
   },
   methods: {
     onClickAccordion() {
-      this.setMode();
-    },
+      this.setMode()
+    }
   },
   mounted() {
-    this.setMode();
+    this.setMode()
   },
   data() {
     return {
-      activeIndex: 0,
-    };
-  },
-};
+      activeIndex: 0
+    }
+  }
+}
 </script>
 
 <!--suppress CssUnusedSymbol -->

@@ -83,22 +83,22 @@
 </template>
 
 <script>
-import Fieldset from "primevue/fieldset";
-import Card from "primevue/card";
+import Fieldset from "primevue/fieldset"
+import Card from "primevue/card"
 
 export default {
   name: "Contact",
   components: {
     Fieldset,
-    Card,
+    Card
   },
   props: {
-    setMode: Function,
+    setMode: Function
   },
   mounted() {
-    this.setMode();
-  },
-};
+    this.setMode()
+  }
+}
 </script>
 
 <!--suppress CssUnusedSymbol -->

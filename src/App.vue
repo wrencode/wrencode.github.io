@@ -64,11 +64,11 @@
 </template>
 
 <script>
-import Menubar from "primevue/menubar";
-import ToggleButton from "primevue/togglebutton";
-import Button from "primevue/button";
-import WrencodeLogo from "@/components/svg/wrencode-logo";
-import SocialMedia from "@/components/svg/social-media";
+import Menubar from "primevue/menubar"
+import ToggleButton from "primevue/togglebutton"
+import Button from "primevue/button"
+import WrencodeLogo from "@/components/svg/wrencode-logo"
+import SocialMedia from "@/components/svg/social-media"
 
 const konamiCode = [
   "ArrowUp",
@@ -80,9 +80,9 @@ const konamiCode = [
   "ArrowLeft",
   "ArrowRight",
   "b",
-  "a",
-];
-let keySequence = [];
+  "a"
+]
+let keySequence = []
 
 export default {
   name: "App",
@@ -91,22 +91,22 @@ export default {
     ToggleButton,
     Button,
     WrencodeLogo,
-    SocialMedia,
+    SocialMedia
   },
   created() {
-    window.addEventListener("scroll", this.onScroll);
-    window.addEventListener("keydown", this.freezeScroll);
-    window.addEventListener("keyup", this.konami);
+    window.addEventListener("scroll", this.onScroll)
+    window.addEventListener("keydown", this.freezeScroll)
+    window.addEventListener("keyup", this.konami)
   },
   unmounted() {
-    window.removeEventListener("scroll", this.onScroll);
-    window.removeEventListener("keydown", this.freezeScroll);
-    window.removeEventListener("keyup", this.konami);
+    window.removeEventListener("scroll", this.onScroll)
+    window.removeEventListener("keydown", this.freezeScroll)
+    window.removeEventListener("keyup", this.konami)
   },
   methods: {
     onScroll() {
-      let rootElement = document.documentElement;
-      let backToTopButton = document.getElementById("back-to-top-button");
+      let rootElement = document.documentElement
+      let backToTopButton = document.getElementById("back-to-top-button")
 
       // console.log("scroll height:", rootElement.scrollHeight);
       // console.log("client height:", rootElement.clientHeight);
@@ -114,11 +114,11 @@ export default {
 
       // if (rootElement.scrollHeight > rootElement.clientHeight + 300) {
       if (rootElement.scrollTop > 65) {
-        backToTopButton.classList.remove("hide-button");
-        backToTopButton.classList.add("show-button");
+        backToTopButton.classList.remove("hide-button")
+        backToTopButton.classList.add("show-button")
       } else {
-        backToTopButton.classList.remove("show-button");
-        backToTopButton.classList.add("hide-button");
+        backToTopButton.classList.remove("show-button")
+        backToTopButton.classList.add("hide-button")
       }
     },
     onClickBackToTop() {
@@ -127,8 +127,8 @@ export default {
       window.scroll({
         top: 0,
         left: 0,
-        behavior: "smooth",
-      });
+        behavior: "smooth"
+      })
 
       // rootElement.scrollTo({
       //   top: 0,
@@ -136,7 +136,7 @@ export default {
       // });
     },
     onClickMenubar() {
-      this.setMode();
+      this.setMode()
     },
     onClickMenubarItem(menubarItemName) {
       // this.$gtag(
@@ -146,22 +146,22 @@ export default {
       //       page_path: `/${menubarItemName}`
       //     }
       // );
-      this.hideBackToTopButton();
-      this.makeMenubarItemActive(menubarItemName);
+      this.hideBackToTopButton()
+      this.makeMenubarItemActive(menubarItemName)
     },
     hideBackToTopButton() {
-      let backToTopButton = document.getElementById("back-to-top-button");
-      backToTopButton.classList.remove("show-button");
-      backToTopButton.classList.add("hide-button");
+      let backToTopButton = document.getElementById("back-to-top-button")
+      backToTopButton.classList.remove("show-button")
+      backToTopButton.classList.add("hide-button")
     },
     makeMenubarItemActive(menubarItemName) {
-      let menubarItems = document.getElementsByClassName("menubar-item");
+      let menubarItems = document.getElementsByClassName("menubar-item")
       for (let menubarItem of menubarItems) {
-        menubarItem.classList.remove("menubar-item-active");
+        menubarItem.classList.remove("menubar-item-active")
       }
 
-      let selectedMenubarItem = document.getElementsByClassName(`menubar-item-${menubarItemName}`).item(0);
-      selectedMenubarItem.classList.add("menubar-item-active");
+      let selectedMenubarItem = document.getElementsByClassName(`menubar-item-${menubarItemName}`).item(0)
+      selectedMenubarItem.classList.add("menubar-item-active")
     },
     // isCompact() {
     //   return window.matchMedia("(max-width: 960px)");
@@ -169,96 +169,96 @@ export default {
     setMode() {
       // let allElements = document.getElementsByTagName("*");
       // let allElements = document.body.querySelectorAll("*");
-      let allElements = document.querySelectorAll("*");
+      let allElements = document.querySelectorAll("*")
 
       if (this.darkMode) {
         for (let element of allElements) {
-          element.classList.remove("light-mode");
-          element.classList.add("dark-mode");
+          element.classList.remove("light-mode")
+          element.classList.add("dark-mode")
         }
       } else {
         for (let element of allElements) {
-          element.classList.remove("dark-mode");
-          element.classList.add("light-mode");
+          element.classList.remove("dark-mode")
+          element.classList.add("light-mode")
         }
       }
     },
     showDesktopView() {
-      let menubarDesktopViewButton = document.getElementById("menubar-desktop-view-button");
-      menubarDesktopViewButton.classList.add("hide-button");
-      let menubarMobileViewButton = document.getElementById("menubar-mobile-view-button");
-      menubarMobileViewButton.classList.remove("hide-button");
+      let menubarDesktopViewButton = document.getElementById("menubar-desktop-view-button")
+      menubarDesktopViewButton.classList.add("hide-button")
+      let menubarMobileViewButton = document.getElementById("menubar-mobile-view-button")
+      menubarMobileViewButton.classList.remove("hide-button")
 
-      let app = document.getElementById("app");
-      app.style.minWidth = "960px";
+      let app = document.getElementById("app")
+      app.style.minWidth = "960px"
 
       document.getElementsByClassName("p-menubar").forEach((elem) => {
-        elem.style.position = "absolute";
-        elem.style.minWidth = "970px"; // ten additional pixels to accomodate the 10px right padding of #app
-        elem.style.padding = "0.5rem";
-      });
-      document.getElementsByClassName("p-menubar-button").forEach((elem) => (elem.style.display = "none"));
+        elem.style.position = "absolute"
+        elem.style.minWidth = "970px" // ten additional pixels to accomodate the 10px right padding of #app
+        elem.style.padding = "0.5rem"
+      })
+      document.getElementsByClassName("p-menubar-button").forEach((elem) => (elem.style.display = "none"))
       document.getElementsByClassName("p-menubar-root-list").forEach((elem) => {
-        elem.style.position = "relative";
-        elem.style.display = "inline-flex";
-        elem.style.boxShadow = "none";
-      });
-      document.getElementsByClassName("p-menuitem").forEach((elem) => (elem.style.width = "initial"));
+        elem.style.position = "relative"
+        elem.style.display = "inline-flex"
+        elem.style.boxShadow = "none"
+      })
+      document.getElementsByClassName("p-menuitem").forEach((elem) => (elem.style.width = "initial"))
     },
     showMobileView() {
-      let menubarDesktopViewButton = document.getElementById("menubar-desktop-view-button");
-      menubarDesktopViewButton.classList.remove("hide-button");
-      let menubarMobileViewButton = document.getElementById("menubar-mobile-view-button");
-      menubarMobileViewButton.classList.add("hide-button");
+      let menubarDesktopViewButton = document.getElementById("menubar-desktop-view-button")
+      menubarDesktopViewButton.classList.remove("hide-button")
+      let menubarMobileViewButton = document.getElementById("menubar-mobile-view-button")
+      menubarMobileViewButton.classList.add("hide-button")
 
-      let app = document.getElementById("app");
-      app.style.removeProperty("min-width");
+      let app = document.getElementById("app")
+      app.style.removeProperty("min-width")
 
       document.getElementsByClassName("p-menubar").forEach((elem) => {
-        elem.style.removeProperty("position");
-        elem.style.removeProperty("min-width");
-        elem.style.removeProperty("padding");
-      });
-      document.getElementsByClassName("p-menubar-button").forEach((elem) => elem.style.removeProperty("display"));
+        elem.style.removeProperty("position")
+        elem.style.removeProperty("min-width")
+        elem.style.removeProperty("padding")
+      })
+      document.getElementsByClassName("p-menubar-button").forEach((elem) => elem.style.removeProperty("display"))
       document.getElementsByClassName("p-menubar-root-list").forEach((elem) => {
-        elem.style.removeProperty("position");
-        elem.style.removeProperty("display");
-        elem.style.removeProperty("box-shadow");
-      });
-      document.getElementsByClassName("p-menuitem").forEach((elem) => elem.style.removeProperty("width"));
+        elem.style.removeProperty("position")
+        elem.style.removeProperty("display")
+        elem.style.removeProperty("box-shadow")
+      })
+      document.getElementsByClassName("p-menuitem").forEach((elem) => elem.style.removeProperty("width"))
     },
     getYear() {
-      return new Date().getFullYear();
+      return new Date().getFullYear()
     },
     freezeScroll(e) {
       if (keySequence[0] === "ArrowUp" && keySequence[1] === "ArrowUp" && e.key === "ArrowDown") {
-        e.preventDefault();
+        e.preventDefault()
       }
     },
     konami(e) {
-      keySequence.push(e.key);
+      keySequence.push(e.key)
 
-      let keySequenceStr = keySequence.join("");
-      let konamiSliceStr = konamiCode.slice(0, keySequence.length).join("");
+      let keySequenceStr = keySequence.join("")
+      let konamiSliceStr = konamiCode.slice(0, keySequence.length).join("")
 
       if (keySequenceStr === konamiCode.join("")) {
-        this.activateSurprise();
+        this.activateSurprise()
       } else if (keySequenceStr === konamiSliceStr) {
         // pass
       } else {
         if (e.key === "ArrowUp") {
-          keySequence = ["ArrowUp"];
+          keySequence = ["ArrowUp"]
         } else {
-          keySequence = [];
+          keySequence = []
         }
       }
     },
     activateSurprise() {
-      this.surprise = true;
+      this.surprise = true
     },
     resetSurprise() {
-      this.surprise = false;
-    },
+      this.surprise = false
+    }
   },
   data() {
     return {
@@ -268,52 +268,52 @@ export default {
           icon: "pi pi-fw pi-home",
           to: "/",
           command: this.onClickMenubarItem.bind(this, "home"),
-          class: "menubar-item menubar-item-home",
+          class: "menubar-item menubar-item-home"
         },
         {
           label: "About",
           icon: "pi pi-fw pi-info-circle",
           to: "/about",
           command: this.onClickMenubarItem.bind(this, "about"),
-          class: "menubar-item menubar-item-about",
+          class: "menubar-item menubar-item-about"
         },
         {
           label: "Services",
           icon: "pi pi-fw pi-user-edit",
           to: "/services",
           command: this.onClickMenubarItem.bind(this, "services"),
-          class: "menubar-item menubar-item-services",
+          class: "menubar-item menubar-item-services"
         },
         {
           label: "Clients",
           icon: "pi pi-fw pi-globe",
           to: "/clients",
           command: this.onClickMenubarItem.bind(this, "clients"),
-          class: "menubar-item menubar-item-clients",
+          class: "menubar-item menubar-item-clients"
         },
         {
           label: "Contact",
           icon: "pi pi-fw pi-envelope",
           to: "/contact",
           command: this.onClickMenubarItem.bind(this, "contact"),
-          class: "menubar-item menubar-item-contact",
-        },
+          class: "menubar-item menubar-item-contact"
+        }
       ],
       darkMode: window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches,
-      surprise: false,
-    };
+      surprise: false
+    }
   },
   computed: {
     isHome() {
-      return this.$route.name === "Home";
-    },
+      return this.$route.name === "Home"
+    }
   },
   watch: {
     darkMode() {
-      this.setMode();
-    },
-  },
-};
+      this.setMode()
+    }
+  }
+}
 </script>
 
 <!--suppress CssUnusedSymbol -->
@@ -344,6 +344,7 @@ export default {
   --red-hawk: #7e3227;
   --midnight-blue: #191970;
   --sunshine-yellow: #fffd37;
+  --logo-height-client: 70px;
 }
 
 root {

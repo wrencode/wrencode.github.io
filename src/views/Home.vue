@@ -10,7 +10,7 @@
         alt="Dancing wren!"
         width="300"
         height="300"
-        v-tooltip.top="'It\'s time for a dance party!'"
+        v-tooltip.bottom="'It\'s time for a dance party!'"
       />
     </a>
     <p class="bring-to-front-of-bg-img">
@@ -22,45 +22,45 @@
 </template>
 
 <script>
-import WrencodeLogo from "@/components/svg/wrencode-logo";
-import SocialMedia from "@/components/svg/social-media";
-import Confetti from "@/components/confetti";
+import WrencodeLogo from "@/components/svg/wrencode-logo"
+import SocialMedia from "@/components/svg/social-media"
+import Confetti from "@/components/confetti"
 
 export default {
   name: "Home",
   components: {
     WrencodeLogo,
     SocialMedia,
-    Confetti,
+    Confetti
   },
   props: {
     setMode: Function,
     surprise: Boolean,
-    resetSurprise: Function,
+    resetSurprise: Function
   },
   methods: {
     getSurpriseClass(surprise) {
-      let surpriseClass = "hide";
+      let surpriseClass = "hide"
       if (surprise) {
-        document.getElementById("surprise")?.classList.remove(surpriseClass);
-        document.getElementById("wrencode-logo")?.classList.add(surpriseClass);
-        surpriseClass = "show";
-        document.getElementById("surprise")?.classList.add(surpriseClass);
-        document.getElementById("wrencode-logo")?.classList.remove(surpriseClass);
+        document.getElementById("surprise")?.classList.remove(surpriseClass)
+        document.getElementById("wrencode-logo")?.classList.add(surpriseClass)
+        surpriseClass = "show"
+        document.getElementById("surprise")?.classList.add(surpriseClass)
+        document.getElementById("wrencode-logo")?.classList.remove(surpriseClass)
       }
-      return surpriseClass + " bring-to-front-of-bg-img";
-    },
+      return surpriseClass + " bring-to-front-of-bg-img"
+    }
   },
   beforeCreate() {
-    this.resetSurprise();
+    this.resetSurprise()
   },
   mounted() {
-    this.setMode();
+    this.setMode()
   },
   unmounted() {
-    this.resetSurprise();
-  },
-};
+    this.resetSurprise()
+  }
+}
 </script>
 
 <!--suppress CssUnusedSymbol -->

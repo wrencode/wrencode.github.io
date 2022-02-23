@@ -10,20 +10,20 @@
 </template>
 
 <script>
-import Chart from "primevue/chart";
+import Chart from "primevue/chart"
 // noinspection ES6CheckImport
-import { Chart as ChartJs } from "chart.js";
-import ChartDataLabels from "chartjs-plugin-datalabels";
+import { Chart as ChartJs } from "chart.js"
+import ChartDataLabels from "chartjs-plugin-datalabels"
 
-ChartJs.plugins.register(ChartDataLabels);
+ChartJs.plugins.register(ChartDataLabels)
 
 export default {
   name: "Services",
   components: {
-    Chart,
+    Chart
   },
   props: {
-    darkMode: Boolean,
+    darkMode: Boolean
   },
   methods: {
     getServices() {
@@ -31,61 +31,61 @@ export default {
         {
           category: "Software Development",
           abbr: "SD",
-          value: 40,
+          value: 40
         },
         {
           category: "Technical Consulting",
           abbr: "TC",
-          value: 25,
+          value: 25
         },
         {
           category: "Machine Learning",
           abbr: "ML",
-          value: 20,
+          value: 20
         },
         {
           category: "Natural Language Processing",
           abbr: "NLP",
-          value: 15,
-        },
-      ];
+          value: 15
+        }
+      ]
     },
     getServicesLabels() {
       let services = this.getServices().sort(function (first, second) {
-        return second.value - first.value;
-      });
+        return second.value - first.value
+      })
 
-      let sortedServicesLabels = [];
+      let sortedServicesLabels = []
       for (let service of services) {
-        sortedServicesLabels.push(service.category);
+        sortedServicesLabels.push(service.category)
       }
 
-      return sortedServicesLabels;
+      return sortedServicesLabels
     },
     getServicesAbbrs() {
       let services = this.getServices().sort(function (first, second) {
-        return second.value - first.value;
-      });
+        return second.value - first.value
+      })
 
-      let sortedServicesAbbrs = [];
+      let sortedServicesAbbrs = []
       for (let service of services) {
-        sortedServicesAbbrs.push(service.abbr);
+        sortedServicesAbbrs.push(service.abbr)
       }
 
-      return sortedServicesAbbrs;
+      return sortedServicesAbbrs
     },
     getServicesValues() {
       let services = this.getServices().sort(function (first, second) {
-        return second.value - first.value;
-      });
+        return second.value - first.value
+      })
 
-      let sortedServicesValues = [];
+      let sortedServicesValues = []
       for (let service of services) {
-        sortedServicesValues.push(service.value);
+        sortedServicesValues.push(service.value)
       }
 
-      return sortedServicesValues;
-    },
+      return sortedServicesValues
+    }
   },
   data() {
     return {
@@ -105,45 +105,45 @@ export default {
               "rgba(79, 133, 159, 0.75)", // jay bird
               "rgba(209,242,235,0.75)", // humming bird
               "rgba(120, 82, 88, 0.75)", // falcon
-              "rgba(170, 196, 226, 0.75)", // blue bird
+              "rgba(170, 196, 226, 0.75)" // blue bird
             ],
             hoverBackgroundColor: [
               "#4f859f", // jay bird
               "#d1f2eb", // humming bird
               "#785258", // falcon
-              "#aac4e2", // blue bird
-            ],
-          },
-        ],
+              "#aac4e2" // blue bird
+            ]
+          }
+        ]
       },
-      plugins: [ChartDataLabels],
-    };
+      plugins: [ChartDataLabels]
+    }
   },
   computed: {
     options() {
-      let darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      let darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
 
-      let darkModeSelected = false;
-      let lightModeSelected = false;
+      let darkModeSelected = false
+      let lightModeSelected = false
       if (this.darkMode) {
         if (document.getElementById("app").classList.contains("dark-mode")) {
-          darkModeSelected = true;
+          darkModeSelected = true
         }
       } else {
         if (document.getElementById("app").classList.contains("light-mode")) {
-          lightModeSelected = true;
+          lightModeSelected = true
         }
       }
 
-      let colorSchemeFontColor = "#4a4139";
-      let colorSchemeBorderColor = "#aba18c";
-      let colorSchemeHoverBorderColor = "#7e3227";
-      let colorSchemeBackgroundColor = "rgba(256, 256, 256, 0.75)";
+      let colorSchemeFontColor = "#4a4139"
+      let colorSchemeBorderColor = "#aba18c"
+      let colorSchemeHoverBorderColor = "#7e3227"
+      let colorSchemeBackgroundColor = "rgba(256, 256, 256, 0.75)"
       if ((darkMode || darkModeSelected) && !lightModeSelected) {
-        colorSchemeFontColor = "#aba18c";
-        colorSchemeBorderColor = "#4a4139";
-        colorSchemeHoverBorderColor = "#f09651";
-        colorSchemeBackgroundColor = "rgba(0, 0, 0, 0.75)";
+        colorSchemeFontColor = "#aba18c"
+        colorSchemeBorderColor = "#4a4139"
+        colorSchemeHoverBorderColor = "#f09651"
+        colorSchemeBackgroundColor = "rgba(0, 0, 0, 0.75)"
       }
 
       return {
@@ -159,8 +159,8 @@ export default {
             borderAlign: "inner",
             hoverBorderColor: colorSchemeHoverBorderColor,
             hoverBorderWidth: 4,
-            hoverOffset: 4,
-          },
+            hoverOffset: 4
+          }
         },
         events: ["mousemove", "mouseout", "click", "touchstart", "touchmove"],
         legend: {
@@ -171,15 +171,15 @@ export default {
             fontWeight: "bold",
             fontFamily: "Source Code Pro",
             fontColor: colorSchemeFontColor,
-            align: "left",
+            align: "left"
           },
           onClick: function (e, legendItem) {
             // TODO: come up with something interesting to do when the legends are clicked
             /* eslint-disable no-unused-vars */
-            let event = e;
-            let item = legendItem;
+            let event = e
+            let item = legendItem
             /* eslint-enable no-unused-vars */
-          },
+          }
         },
         title: {
           display: true,
@@ -190,7 +190,7 @@ export default {
           fontWeight: "bold",
           fontColor: colorSchemeFontColor,
           fontFamily: "Source Code Pro",
-          lineHeight: 1,
+          lineHeight: 1
         },
         tooltips: {
           bodyFontFamily: "Source Code Pro",
@@ -202,13 +202,13 @@ export default {
           caretPadding: 10,
           callbacks: {
             label: function (tooltipItem, data) {
-              return data.labels[tooltipItem.index];
+              return data.labels[tooltipItem.index]
               // let label = data.labels[tooltipItem.index];
               // let value =
               //   data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
               // return label + ": " + value + "%";
-            },
-          },
+            }
+          }
         },
         plugins: {
           datalabels: {
@@ -216,23 +216,23 @@ export default {
             font: {
               family: "Source Code Pro",
               size: 20,
-              weight: "bold",
+              weight: "bold"
             },
             // borderWidth: 2,
             // borderColor: colorSchemeBorderColor,
             borderRadius: 5,
             backgroundColor: colorSchemeBorderColor,
             formatter: (value, context) => {
-              return this.getServicesAbbrs()[context.dataIndex] + ": " + value + "%";
+              return this.getServicesAbbrs()[context.dataIndex] + ": " + value + "%"
               // return context.chart.data.labels[context.dataIndex] + "\n" + value + "%"
               // return value + "%"
-            },
-          },
-        },
-      };
-    },
-  },
-};
+            }
+          }
+        }
+      }
+    }
+  }
+}
 </script>
 
 <!--suppress CssUnusedSymbol -->

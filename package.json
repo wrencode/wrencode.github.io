@@ -29,6 +29,11 @@
     "eslint-plugin-vue": "^7.0.0",
     "prettier": "^2.2.1"
   },
+  "babel": {
+    "presets": [
+      "@vue/cli-plugin-babel/preset"
+    ]
+  },
   "eslintConfig": {
     "root": true,
     "env": {
@@ -45,9 +50,9 @@
     "rules": {}
   },
   "prettier": {
-    "trailingComma": "all",
+    "trailingComma": "none",
     "tabWidth": 2,
-    "semi": true,
+    "semi": false,
     "singleQuote": false,
     "printWidth": 120
   },

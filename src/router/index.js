@@ -1,10 +1,10 @@
-import { createWebHistory, createRouter } from "vue-router";
-import Home from "@/views/Home.vue";
-import About from "@/views/About.vue";
-import Services from "@/views/Services.vue";
-import Clients from "@/views/Clients.vue";
-import Contact from "@/views/Contact.vue";
-import PageNotFound from "@/views/PageNotFound.vue";
+import { createWebHistory, createRouter } from "vue-router"
+import Home from "@/views/Home.vue"
+import About from "@/views/About.vue"
+import Services from "@/views/Services.vue"
+import Clients from "@/views/Clients.vue"
+import Contact from "@/views/Contact.vue"
+import PageNotFound from "@/views/PageNotFound.vue"
 
 const routes = [
   {
@@ -13,50 +13,50 @@ const routes = [
     component: Home,
     beforeEnter: (to, from, next) => {
       if (sessionStorage.getItem("redirect") !== null) {
-        const redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
-        next(redirect);
+        const redirect = sessionStorage.redirect
+        delete sessionStorage.redirect
+        next(redirect)
       } else {
-        next();
+        next()
       }
-    },
+    }
   },
   {
     path: "/about",
     name: "About",
-    component: About,
+    component: About
   },
   {
     path: "/services",
     name: "Services",
-    component: Services,
+    component: Services
   },
   {
     path: "/clients",
     name: "Clients",
-    component: Clients,
+    component: Clients
   },
   {
     path: "/contact",
     name: "Contact",
-    component: Contact,
+    component: Contact
   },
   {
     path: "/:pathMatch(.*)*",
-    component: PageNotFound,
-  },
-];
+    component: PageNotFound
+  }
+]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
-});
+  routes
+})
 
 router.afterEach((to) => {
   window.gtag("config", window.GA_MEASUREMENT_ID, {
     page_path: to.fullPath,
-    send_page_view: true,
-  });
-});
+    send_page_view: true
+  })
+})
 
-export default router;
+export default router
