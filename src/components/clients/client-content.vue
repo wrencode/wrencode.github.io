@@ -36,14 +36,16 @@ export default {
 
 .p-card-content p {
   text-align: left;
+  font-size: var(--font-size-small);
 }
 
-ul {
+.p-card-content ul {
   text-align: left;
   margin-top: 0.5em;
+  font-size: var(--font-size-small);
 }
 
-li {
+.p-card-content li {
   margin-bottom: 0.5em;
 }
 </style>

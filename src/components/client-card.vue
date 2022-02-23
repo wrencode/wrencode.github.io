@@ -38,11 +38,11 @@ export default {
 <style scoped>
 .client-card {
   text-align: center;
-  max-width: 500px;
+  max-width: 640px;
   display: inline-block;
   margin: 10px;
   vertical-align: top;
-  min-height: 800px;
+  min-height: 600px;
 }
 
 .client-card:hover {

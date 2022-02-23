@@ -240,10 +240,13 @@ export default {
 .chart-container {
   position: relative;
   width: 100%;
-  height: 1000px;
+  /*height: 1000px;*/
+  height: 75vh;
+  min-height: 640px;
 }
 
 .p-chart {
-  height: 100vh;
+  height: 75vh;
+  min-height: 540px;
 }
 </style>

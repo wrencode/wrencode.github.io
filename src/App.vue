@@ -344,6 +344,17 @@ export default {
   --red-hawk: #7e3227;
   --midnight-blue: #191970;
   --sunshine-yellow: #fffd37;
+  --font-size-largest: 22pt;
+  --font-size-larger: 20pt;
+  --font-size-large: 18pt;
+  --font-size-increased: 16pt;
+  --font-size-normal: 14pt;
+  --font-size-reduced: 12pt;
+  --font-size-small: 10pt;
+  --font-size-smaller: 8pt;
+  --font-size-smallest: 6pt;
+  /*--logo-width-client: auto;*/
+  --logo-width-client: 360px;
   --logo-height-client: 70px;
 }
 
@@ -373,7 +384,7 @@ body {
 #app {
   color: var(--wren);
   font-weight: 600;
-  font-size: 14pt;
+  font-size: var(--font-size-normal);
   background: var(--cactus-wren);
   font-family: "Source Code Pro", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -788,6 +799,10 @@ body {
   display: inline-flex !important;
 }
 
+.p-tooltip {
+  z-index: 1100 !important; /* make sure tooltips on menubar appear above menubar set to z-index: 1000 */
+}
+
 .p-tooltip.p-tooltip-right .p-tooltip-arrow {
   border-right-color: rgba(256, 256, 256, 0.75) !important;
 }
@@ -836,7 +851,7 @@ body {
   flex-shrink: 0;
   bottom: 0;
   color: var(--wren-transparency-50) !important;
-  font-size: 8pt !important;
+  font-size: var(--font-size-smaller) !important;
 }
 
 .footer.dark-mode {
@@ -861,7 +876,7 @@ body {
   color: var(--wren-transparency-25) !important;
   background: transparent !important;
   border: none !important;
-  font-size: 6pt !important;
+  font-size: var(--font-size-tiny) !important;
 }
 
 .footer-surprise.dark-mode {

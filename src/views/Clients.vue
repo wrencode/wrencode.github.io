@@ -123,8 +123,8 @@ export default {
 }
 
 .p-card-header {
-  height: 100px !important;
-  max-height: 100px !important;
+  height: 100px;
+  max-height: 100px;
 }
 
 .p-card-title > a {

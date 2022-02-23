@@ -143,7 +143,7 @@ export default {
 
 .p-accordion-content {
   text-align: left;
-  font-size: 14pt;
+  font-size: var(--font-size-normal);
   background: var(--cactus-wren) !important;
   color: var(--wren) !important;
   border: none !important;
