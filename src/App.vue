@@ -96,12 +96,18 @@ export default {
     window.addEventListener("keydown", this.freezeScroll)
     window.addEventListener("keyup", this.konami)
   },
+  mounted() {
+    this.desktopView = false
+  },
   unmounted() {
     window.removeEventListener("scroll", this.onScroll)
     window.removeEventListener("keydown", this.freezeScroll)
     window.removeEventListener("keyup", this.konami)
   },
   methods: {
+    onResize() {
+      this.mobileView = window.innerWidth
+    },
     onScroll() {
       let rootElement = document.documentElement
       let backToTopButton = document.getElementById("back-to-top-button")
@@ -161,9 +167,6 @@ export default {
       let selectedMenubarItem = document.getElementsByClassName(`menubar-item-${menubarItemName}`).item(0)
       selectedMenubarItem.classList.add("menubar-item-active")
     },
-    // isCompact() {
-    //   return window.matchMedia("(max-width: 960px)");
-    // },
     setMode() {
       let allElements = document.querySelectorAll("*")
 
@@ -179,11 +182,11 @@ export default {
         }
       }
 
-      // required maintain current view since document.querySelectorAll(*) returns a non-live (static) node list
-      if (this.isMobileView) {
-        this.showMobileView()
-      } else {
+      // required to maintain current view since document.querySelectorAll(*) returns a non-live (static) node list
+      if (this.desktopView) {
         this.showDesktopView()
+      } else {
+        this.showMobileView()
       }
     },
     getModeTooltip() {
@@ -194,7 +197,7 @@ export default {
       }
     },
     showDesktopView() {
-      this.isMobileView = false
+      this.desktopView = true
       let menubarDesktopViewButton = document.getElementById("menubar-desktop-view-button")
       menubarDesktopViewButton.classList.add("hide-button")
       let menubarMobileViewButton = document.getElementById("menubar-mobile-view-button")
@@ -217,7 +220,7 @@ export default {
       document.getElementsByClassName("p-menuitem").forEach((elem) => (elem.style.width = "initial"))
     },
     showMobileView() {
-      this.isMobileView = true
+      this.desktopView = false
       let menubarDesktopViewButton = document.getElementById("menubar-desktop-view-button")
       menubarDesktopViewButton.classList.remove("hide-button")
       let menubarMobileViewButton = document.getElementById("menubar-mobile-view-button")
@@ -312,7 +315,7 @@ export default {
         }
       ],
       darkMode: window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches,
-      isMobileView: false,
+      desktopView: window.matchMedia && window.matchMedia("(min-width: 960px)").matches,
       surprise: false
     }
   },
