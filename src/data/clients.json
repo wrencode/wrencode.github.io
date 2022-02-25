@@ -1,0 +1,63 @@
+[
+  {
+    "key": "strive",
+    "name": "Strive Messaging",
+    "url": "https://www.strivemessaging.org",
+    "tooltip": "Go to strivemessaging.org",
+    "headerComponentPath": "clients/svg/strive-messaging-logo",
+    "headerComponent": "StriveMessagingLogo",
+    "title": "Message Your Movement",
+    "about": {
+      "description": [
+        "Strive is the broadcast texting tool made for nonprofits, and campaigns to activate their supporters. Strive is a powerful broadcast texting tool used by organizations and campaigns around the world. We make it easy to scale your messaging while building relationships with your movement.",
+        "Grow your base, mobilize your supporters, and deepen — all in one place. We’re innovating what texting can do, so your messages always make an impact."
+      ],
+      "bulletsTitle": "Completed & Ongoing Projects",
+      "bullets": [
+        {
+          "name": "Hiring",
+          "items": ["Technical screening and interviewing"]
+        },
+        {
+          "name": "Website & platform migration and deployment",
+          "items": [
+            "JavaScript: Node.js, React",
+            "AWS: Route 54, S3, CodePipeline, CloudFront, AWS Certificate Manager"
+          ]
+        },
+        {
+          "name": "Security Compliance",
+          "items": ["SOC 2 research", "Implementation of development & architecture best practices"]
+        }
+      ]
+    }
+  },
+  {
+    "key": "ditto",
+    "name": "Ditto",
+    "url": "https://www.workwithditto.com",
+    "tooltip": "Go to workwithditto.com",
+    "headerComponentPath": "clients/svg/ditto-logo",
+    "headerComponent": "DittoLogo",
+    "title": "Work with Ditto!",
+    "about": {
+      "description": [
+        "Ditto is the first payment platform built for project-based work.",
+        "Ditto is a Better Way to Pay and Be Paid.",
+        "For Contractors: Never wonder if you’ll be paid - funds are collected upfront. Get paid promptly after the work is complete - every time.",
+        "For Clients: Funds aren’t released until you’re satisfied. No more unsecured deposits or unmitigated resource risks."
+      ],
+      "bulletsTitle": "Completed & Ongoing Projects",
+      "bullets": [
+        {
+          "name": "Development",
+          "items": ["Containerization of tech stack components"]
+        },
+        {
+          "name": "Third-party integration",
+          "items": ["Implementation of Intercom identity verification for security"]
+        }
+      ]
+    }
+  }
+]

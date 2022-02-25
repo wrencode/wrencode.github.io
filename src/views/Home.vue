@@ -17,20 +17,20 @@
       Wrencode, LLC focuses on the implementation and optimization of modern technology to help you soar to new heights!
     </p>
     <h3 class="bring-to-front-of-bg-img">Find Wrencode at:</h3>
-    <SocialMedia id="social-media" class="bring-to-front-of-bg-img" />
+    <WrencodeSocialMedia id="social-media" class="bring-to-front-of-bg-img" />
   </div>
 </template>
 
 <script>
 import WrencodeLogo from "@/components/svg/wrencode-logo"
-import SocialMedia from "@/components/svg/social-media"
+import WrencodeSocialMedia from "@/components/svg/wrencode-social-media"
 import Confetti from "@/components/confetti"
 
 export default {
   name: "Home",
   components: {
     WrencodeLogo,
-    SocialMedia,
+    WrencodeSocialMedia,
     Confetti
   },
   props: {

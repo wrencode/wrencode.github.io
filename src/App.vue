@@ -12,7 +12,7 @@
           class="p-button-icon-only p-button-rounded menubar-switch-mode-button"
           onIcon="pi pi-sun"
           offIcon="pi pi-moon"
-          v-tooltip.bottom="'Switch Dark/Light Mode'"
+          v-tooltip.bottom="getModeTooltip()"
         />
         <div id="menubar-switch-view-button-filler" />
         <Button
@@ -34,9 +34,7 @@
           <i class="pi pi-mobile"></i>
         </Button>
       </template>
-      <!--      <template #end>-->
-      <!--        Test-->
-      <!--      </template>-->
+      <!--      <template #end> Test </template>-->
     </Menubar>
     <br />
     <br />
@@ -52,7 +50,7 @@
     <i class="pi pi-arrow-up"></i>
   </Button>
   <footer class="footer">
-    <SocialMedia class="footer-social-media" />
+    <WrencodeSocialMedia class="footer-social-media" />
     <p>Copyright © {{ getYear() }} Wrencode, LLC. All rights reserved.</p>
     <Button
       class="p-button-rounded p-button-sm footer-surprise"
@@ -68,7 +66,7 @@ import Menubar from "primevue/menubar"
 import ToggleButton from "primevue/togglebutton"
 import Button from "primevue/button"
 import WrencodeLogo from "@/components/svg/wrencode-logo"
-import SocialMedia from "@/components/svg/social-media"
+import WrencodeSocialMedia from "@/components/svg/wrencode-social-media"
 
 const konamiCode = [
   "ArrowUp",
@@ -91,7 +89,7 @@ export default {
     ToggleButton,
     Button,
     WrencodeLogo,
-    SocialMedia
+    WrencodeSocialMedia
   },
   created() {
     window.addEventListener("scroll", this.onScroll)
@@ -167,8 +165,6 @@ export default {
     //   return window.matchMedia("(max-width: 960px)");
     // },
     setMode() {
-      // let allElements = document.getElementsByTagName("*");
-      // let allElements = document.body.querySelectorAll("*");
       let allElements = document.querySelectorAll("*")
 
       if (this.darkMode) {
@@ -182,8 +178,23 @@ export default {
           element.classList.add("light-mode")
         }
       }
+
+      // required maintain current view since document.querySelectorAll(*) returns a non-live (static) node list
+      if (this.isMobileView) {
+        this.showMobileView()
+      } else {
+        this.showDesktopView()
+      }
+    },
+    getModeTooltip() {
+      if (this.darkMode) {
+        return "Light Mode"
+      } else {
+        return "Dark Mode"
+      }
     },
     showDesktopView() {
+      this.isMobileView = false
       let menubarDesktopViewButton = document.getElementById("menubar-desktop-view-button")
       menubarDesktopViewButton.classList.add("hide-button")
       let menubarMobileViewButton = document.getElementById("menubar-mobile-view-button")
@@ -206,6 +217,7 @@ export default {
       document.getElementsByClassName("p-menuitem").forEach((elem) => (elem.style.width = "initial"))
     },
     showMobileView() {
+      this.isMobileView = true
       let menubarDesktopViewButton = document.getElementById("menubar-desktop-view-button")
       menubarDesktopViewButton.classList.remove("hide-button")
       let menubarMobileViewButton = document.getElementById("menubar-mobile-view-button")
@@ -300,6 +312,7 @@ export default {
         }
       ],
       darkMode: window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches,
+      isMobileView: false,
       surprise: false
     }
   },
@@ -354,7 +367,7 @@ export default {
   --font-size-smaller: 8pt;
   --font-size-smallest: 6pt;
   /*--logo-width-client: auto;*/
-  --logo-width-client: 360px;
+  --logo-width-client: 300px;
   --logo-height-client: 70px;
 }
 
@@ -684,8 +697,8 @@ body {
   font-family: "Source Code Pro", Roboto, sans-serif;
   /*background: var(--wren) !important; !* wren *!*/
   background: var(--wren-transparency-75) !important;
-  display: flex; /* full width of page */
-  /*display: inline-block; !* only width of contents *!*/
+  /*display: flex; !* full width of page *!*/
+  display: inline-block; /* only width of contents */
   justify-content: space-around;
   text-align: left;
   color: var(--wren);

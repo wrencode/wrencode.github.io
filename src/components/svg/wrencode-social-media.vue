@@ -166,7 +166,7 @@
 
 <script>
 export default {
-  name: "SocialMedia"
+  name: "WrencodeSocialMedia"
 }
 </script>
 

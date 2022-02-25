@@ -46,15 +46,15 @@
     ],
     "parserOptions": {
       "parser": "babel-eslint"
-    },
-    "rules": {}
+    }
   },
   "prettier": {
     "trailingComma": "none",
     "tabWidth": 2,
     "semi": false,
     "singleQuote": false,
-    "printWidth": 120
+    "printWidth": 120,
+    "vue/no-unused-components": "error"
   },
   "browserslist": [
     "> 1%",
