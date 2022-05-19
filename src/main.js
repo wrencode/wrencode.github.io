@@ -14,6 +14,8 @@ import Card from "primevue/card"
 import "primevue/resources/themes/nova/theme.css"
 import "primevue/resources/primevue.min.css"
 import "primeicons/primeicons.css"
+// import "prismjs/themes/prism.css"
+import "prismjs/themes/prism-dark.css"
 
 const app = createApp(App)
 

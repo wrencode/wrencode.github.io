@@ -1,5 +1,9 @@
 <template>
-  <ContentCollection :content-collection-legend="contactLegend" :contents="contacts" />
+  <ContentCollection
+    :content-collection-item-class="contactClass"
+    :content-collection-legend="contactLegend"
+    :contents="contacts"
+  />
 </template>
 
 <script>
@@ -18,6 +22,7 @@ export default {
     this.setMode()
   },
   data: () => ({
+    contactClass: "contact",
     contactLegend: "Meet the Team",
     contacts: contacts
   })

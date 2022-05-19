@@ -1,4 +1,3 @@
-<!--suppress ALL -->
 <template>
   <div id="app">
     <Menubar :model="items" v-on:click="onClickMenubar" :key="darkMode">
@@ -61,6 +60,7 @@
   </footer>
 </template>
 
+<!--suppress JSUnusedGlobalSymbols -->
 <script>
 import Menubar from "primevue/menubar"
 import ToggleButton from "primevue/togglebutton"
@@ -206,18 +206,18 @@ export default {
       let app = document.getElementById("app")
       app.style.minWidth = "960px"
 
-      document.getElementsByClassName("p-menubar").forEach((elem) => {
+      Array.from(document.getElementsByClassName("p-menubar")).forEach((elem) => {
         elem.style.position = "absolute"
-        elem.style.minWidth = "970px" // ten additional pixels to accomodate the 10px right padding of #app
+        elem.style.minWidth = "970px" // ten additional pixels to accommodate the 10px right padding of #app
         elem.style.padding = "0.5rem"
       })
-      document.getElementsByClassName("p-menubar-button").forEach((elem) => (elem.style.display = "none"))
-      document.getElementsByClassName("p-menubar-root-list").forEach((elem) => {
+      Array.from(document.getElementsByClassName("p-menubar-button")).forEach((elem) => (elem.style.display = "none"))
+      Array.from(document.getElementsByClassName("p-menubar-root-list")).forEach((elem) => {
         elem.style.position = "relative"
         elem.style.display = "inline-flex"
         elem.style.boxShadow = "none"
       })
-      document.getElementsByClassName("p-menuitem").forEach((elem) => (elem.style.width = "initial"))
+      Array.from(document.getElementsByClassName("p-menuitem")).forEach((elem) => (elem.style.width = "initial"))
     },
     showMobileView() {
       this.desktopView = false
@@ -229,18 +229,20 @@ export default {
       let app = document.getElementById("app")
       app.style.removeProperty("min-width")
 
-      document.getElementsByClassName("p-menubar").forEach((elem) => {
+      Array.from(document.getElementsByClassName("p-menubar")).forEach((elem) => {
         elem.style.removeProperty("position")
         elem.style.removeProperty("min-width")
         elem.style.removeProperty("padding")
       })
-      document.getElementsByClassName("p-menubar-button").forEach((elem) => elem.style.removeProperty("display"))
-      document.getElementsByClassName("p-menubar-root-list").forEach((elem) => {
+      Array.from(document.getElementsByClassName("p-menubar-button")).forEach((elem) =>
+        elem.style.removeProperty("display")
+      )
+      Array.from(document.getElementsByClassName("p-menubar-root-list")).forEach((elem) => {
         elem.style.removeProperty("position")
         elem.style.removeProperty("display")
         elem.style.removeProperty("box-shadow")
       })
-      document.getElementsByClassName("p-menuitem").forEach((elem) => elem.style.removeProperty("width"))
+      Array.from(document.getElementsByClassName("p-menuitem")).forEach((elem) => elem.style.removeProperty("width"))
     },
     getYear() {
       return new Date().getFullYear()
@@ -305,6 +307,13 @@ export default {
           to: "/clients",
           command: this.onClickMenubarItem.bind(this, "clients"),
           class: "menubar-item menubar-item-clients"
+        },
+        {
+          label: "Products",
+          icon: "pi pi-fw pi-tags",
+          to: "/products",
+          command: this.onClickMenubarItem.bind(this, "products"),
+          class: "menubar-item menubar-item-products"
         },
         {
           label: "Contact",
@@ -892,7 +901,7 @@ body {
   color: var(--wren-transparency-25) !important;
   background: transparent !important;
   border: none !important;
-  font-size: var(--font-size-tiny) !important;
+  font-size: var(--font-size-smallest) !important;
 }
 
 .footer-surprise.dark-mode {

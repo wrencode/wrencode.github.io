@@ -6,6 +6,7 @@
         <div class="content-cards">
           <ContentCard
             v-for="(content, index) in contents"
+            :class="createContentClass(contentCollectionItemClass)"
             :key="content.key"
             :card-index="index"
             :card-header-url="content.url"
@@ -15,16 +16,30 @@
               <component :is="content.headerComponent" />
             </template>
             <template v-if="Object.prototype.hasOwnProperty.call(content, 'title')" v-slot:cardTitle>
-              {{ content.title }}
+              <a v-if="Object.prototype.hasOwnProperty.call(content, 'url')" v-bind:href="content.url">
+                {{ content.title }}
+              </a>
+              <span v-else>
+                {{ content.title }}
+              </span>
             </template>
             <template v-if="Object.prototype.hasOwnProperty.call(content, 'subtitle')" v-slot:cardSubtitle>
               {{ content.subtitle }}
+              <div v-if="Object.prototype.hasOwnProperty.call(content, 'subtitleGitHubUrl')">
+                <a v-bind:href="content.subtitleGitHubUrl">
+                  {{ content.subtitleGitHubUrl }}
+                </a>
+              </div>
             </template>
             <template v-slot:cardContent>
               <div class="content-container">
                 <p :key="index" v-for="(paragraph, index) in content.about.description">
                   <i>{{ paragraph }}</i>
                 </p>
+                <div v-if="Object.prototype.hasOwnProperty.call(content, 'screenshotComponentPath')">
+                  <br class="divider" />
+                  <component :is="content.screenshotComponent" />
+                </div>
                 <br class="divider" />
                 <p>
                   <b>{{ content.about.bulletsTitle }}</b>
@@ -39,6 +54,12 @@
                     </ul>
                   </li>
                 </ul>
+                <!-- https://prismjs.com/#supported-languages -->
+                <div
+                  v-bind:class="`product-markdown language-` + content.markdown.prismProgrammingLanguage"
+                  v-if="Object.prototype.hasOwnProperty.call(content, 'markdown')"
+                  v-html="markdownToHtml(content.markdown.body)"
+                ></div>
               </div>
             </template>
             <template v-if="Object.prototype.hasOwnProperty.call(content, 'footerComponent')" v-slot:cardFooter>
@@ -55,6 +76,8 @@
 import Fieldset from "primevue/fieldset"
 import ContentCard from "@/components/content-card"
 import { defineAsyncComponent } from "vue"
+import { marked } from "marked"
+import Prism from "prismjs"
 
 export default {
   name: "ContentCollection",
@@ -64,6 +87,7 @@ export default {
   },
   props: {
     contentCollectionLegend: String,
+    contentCollectionItemClass: String,
     contents: {
       type: Object,
       default() {
@@ -75,10 +99,17 @@ export default {
           headerComponent: String,
           title: String,
           subtitle: String,
+          subtitleGitHubUrl: String,
           about: {
             description: Object,
             bulletsTitle: String,
             bullets: Object
+          },
+          screenshotComponentPath: String,
+          screenshotComponent: String,
+          markdown: {
+            body: String,
+            prismProgrammingLanguage: String
           },
           footerComponentPath: String,
           footerComponent: String
@@ -104,6 +135,27 @@ export default {
           import(`@/components/${content.footerComponentPath}.vue`)
         )
       }
+      if (
+        Object.prototype.hasOwnProperty.call(content, "screenshotComponent") &&
+        Object.prototype.hasOwnProperty.call(content, "screenshotComponentPath")
+      ) {
+        this.$options.components[content.screenshotComponent] = defineAsyncComponent(() =>
+          import(`@/components/${content.screenshotComponentPath}.vue`)
+        )
+      }
+    }
+  },
+  mounted() {
+    window.Prism = window.Prism || {}
+    window.Prism.manual = true
+    Prism.highlightAll()
+  },
+  methods: {
+    markdownToHtml(markdown) {
+      return marked(markdown)
+    },
+    createContentClass(contentName) {
+      return `${contentName.toString().toLowerCase()}-content-item`
     }
   }
 }
@@ -124,6 +176,10 @@ export default {
   overflow: hidden;
   /*padding-top: 70%;*/
   text-align: center;
+}
+
+.content-container .product-markdown {
+  text-align: left;
 }
 
 .divider {

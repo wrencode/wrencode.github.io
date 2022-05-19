@@ -3,6 +3,7 @@ import Home from "@/views/Home.vue"
 import About from "@/views/About.vue"
 import Services from "@/views/Services.vue"
 import Clients from "@/views/Clients.vue"
+import Products from "@/views/Products.vue"
 import Contact from "@/views/Contact.vue"
 import PageNotFound from "@/views/PageNotFound.vue"
 
@@ -35,6 +36,11 @@ const routes = [
     path: "/clients",
     name: "Clients",
     component: Clients
+  },
+  {
+    path: "/products",
+    name: "Product",
+    component: Products
   },
   {
     path: "/contact",

@@ -1,5 +1,9 @@
 <template>
-  <ContentCollection :content-collection-legend="clientLegend" :contents="clients" />
+  <ContentCollection
+    :content-collection-item-class="clientClass"
+    :content-collection-legend="clientLegend"
+    :contents="clients"
+  />
 </template>
 
 <script>
@@ -18,6 +22,7 @@ export default {
     this.setMode()
   },
   data: () => ({
+    clientClass: "client",
     clientLegend: "Clients",
     clients: clients
   })
@@ -28,7 +33,7 @@ export default {
 <style scoped>
 :deep(.content-card) {
   max-width: 640px;
-  min-height: 620px;
+  min-height: 640px;
 }
 
 :deep(.p-card-header) {

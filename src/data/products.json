@@ -1,0 +1,49 @@
+[
+  {
+    "key": "crypto-utils",
+    "name": "Crypto Utils",
+    "url": "https://www.google.com",
+    "tooltip": "Check out Crypto Utils in the Google Workspace Marketplace!",
+    "headerComponentPath": "products/svg/crypto-utils-logo",
+    "headerComponent": "CryptoUtilsHeader",
+    "title": "Crypto Utils for Google Sheets",
+    "subtitle": "Open source on GitHub:",
+    "subtitleGitHubUrl": "https://github.com/wrencode/crypto-utils-for-gas",
+    "about": {
+      "description": [
+        "Crypto Utils is a Google Sheets add-on written using Google Apps Script (GAS) that provides a selection of cryptocurrency data retrieval capabilities.",
+        "Crypto Utils is fully open source for transparency, and accessible on GitHub."
+      ],
+      "bulletsTitle": "Features",
+      "bullets": [
+        {
+          "name": "Wallet Balances",
+          "items": [
+            "Retrieve balances from public cryptocurrency wallet addresses for a variety of supported cryptocurrencies."
+          ]
+        },
+        {
+          "name": "Exchange Balances",
+          "items": [
+            "Retrieve balances from cryptocurrency exchange accounts for a variety of supported cryptocurrency exchanges."
+          ]
+        },
+        {
+          "name": "Data",
+          "items": [
+            "Get current price",
+            "Get price on specified dates",
+            "Get full name from ticker",
+            "Get cryptocurrency type from ticker"
+          ]
+        }
+      ]
+    },
+    "screenshotComponentPath": "products/img/crypto-utils-screenshot",
+    "screenshotComponent": "CryptoUtilsScreenshot",
+    "markdown": {
+      "body": "## Code Example:\n```\n\\\\ testing \nfunction() {\n    console.log(Hello World)\n}\n```\n```\n=SUM(\"A1:A2\")\n```",
+      "prismProgrammingLanguage": "javascript"
+    }
+  }
+]
