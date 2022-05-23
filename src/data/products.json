@@ -8,7 +8,7 @@
     "headerComponent": "CryptoUtilsHeader",
     "title": "Crypto Utils for Google Sheets",
     "subtitle": "Open source on GitHub:",
-    "subtitleGitHubUrl": "https://github.com/wrencode/crypto-utils-for-gas",
+    "subtitleGitHubUrl": "https://github.com/wrencode/crypto-utils-for-google-sheets",
     "about": {
       "description": [
         "Crypto Utils is a Google Sheets add-on written using Google Apps Script (GAS) that provides a selection of cryptocurrency data retrieval capabilities.",
@@ -42,7 +42,7 @@
     "screenshotComponentPath": "products/img/crypto-utils-screenshot",
     "screenshotComponent": "CryptoUtilsScreenshot",
     "markdown": {
-      "body": "## Code Example:\n```\n\\\\ testing \nfunction() {\n    console.log(Hello World)\n}\n```\n```\n=SUM(\"A1:A2\")\n```",
+      "body": "##### Code Example & Usage\n```/**\n * Fetches balance(s) of public ETH wallet(s).\n *\n * @param {string} addresses - Comma-separated list of public wallet addresses as string.\n * @param {string} apiKey - Personal etherscan.io API key.\n *\n * @return {number} The total amount of the cryptocurrency stored in the wallet(s).\n */\nfunction fetchEthereumBalance(addresses: string, apiKey: string) {\n  let totalAmount = 0\n  for (let address of addresses) {\n    let addressInfo = utilCleanAddress(address)\n    address = addressInfo[\"address\"]\n\n    const url = \"https://api.etherscan.io/api?module=account&action=balance&address=\" + address + \"&tag=latest&apikey=\" + apiKey\n    \n    let amount = utilGetCryptoAmountFromApi(url, address, \"result\", 1000000000000000000)\n    \n    console.log(\"Amount: \" + amount)\n    totalAmount += amount\n  }\n  return totalAmount\n}\n```\n```\n=CRYPTO_PRICE(\"ETH\", \"USD\", apis!C2)\n=CRYPTO_PRICE_ON_DATE(\"ETH\", \"USD\",  apis!C2, \"1619827200\")\n=CRYPTO_NAME(\"ETH\")\n=CRYPTO_TYPE(\"ETH\")\n=CRYPTO_WALLET_TICKERS()\n=CRYPTO_WALLET_BALANCE(\"ETH\", \"0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B\", apis!C5)\n=CRYPTO_EXCHANGES()\n=CRYPTO_EXCHANGE_BALANCE(\"ETH\", \"binance-us\", apis!A7 & \":\" & apis!B7 & \":\" & apis!C7)\n```",
       "prismProgrammingLanguage": "javascript"
     }
   }
