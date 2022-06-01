@@ -10,17 +10,15 @@
           </template>
           <p>
             Wrencode, LLC was founded in March of 2021 by Wren Rudolph to support his side job as an independent
-            technical consultant. In this capacity he provides software engineering services, machine learning and
-            natural language processing expertise, as well as implementation of best practices for software
-            documentation, hiring, team-building, and agile software development.
+            technical consultant. In this capacity he provides software engineering services & expertise, full-stack
+            development capabilities, and implementation of best practices for software documentation, hiring,
+            team-building, and agile software development.
           </p>
           <p>
             Wren is a software engineer by trade, with many years of experience in the tech government contracting space
             building applications for the intelligence community. Wren completed his undergraduate studies at the
-            College of William & Mary, where he double-majored in applied mathematics and linguistics. The intersection
-            of these areas of interest subsequently led to his discovery of computational linguistics, which in turn
-            introduced him to the worlds of natural language processing, machine learning, and artificial intelligence.
-            Wren now works as a Senior Machine Learning Engineer for a FinTech startup called Botkeeper.
+            College of William & Mary, where he double-majored in applied mathematics and linguistics, and now continues
+            to grow his love of technology by expanding his knowledge and skills professionally.
           </p>
         </AccordionTab>
         <AccordionTab>

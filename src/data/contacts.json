@@ -11,14 +11,13 @@
       "description": [
         "I like to take things apart and put them back together!",
         "I love language and logic, and am excited by challenges that force me to think in new ways to overcome them.",
-        "Computers fascinate me, and I want to be a part of a future where the union of technology and linguistics enables programs to understand and accomplish things nobody could ever have imagined.",
-        "As such, I continue to focus my efforts on working at the forefront of the artificial intelligence, machine learning, and natural language processing fields, as I firmly believe that such technologies will pave the way for a new tomorrow!"
+        "Computers fascinate me, and I want to be a part of a future where the union of technology and linguistics enables programs to understand and accomplish things nobody could ever have imagined!"
       ],
       "bulletsTitle": "Interests",
       "bullets": [
         {
           "name": "Technology",
-          "items": ["AI/ML/NLP", "IoT", "Cryptocurrency"]
+          "items": ["NLP/ML/AI", "IoT", "Cryptocurrency"]
         },
         {
           "name": "Fitness & Sports",

@@ -29,9 +29,9 @@ export default {
     getServices() {
       return [
         {
-          category: "Software Development",
-          abbr: "SD",
-          value: 40
+          category: "Software Engineering",
+          abbr: "SE",
+          value: 30
         },
         {
           category: "Technical Consulting",
@@ -39,9 +39,9 @@ export default {
           value: 25
         },
         {
-          category: "Machine Learning",
-          abbr: "ML",
-          value: 20
+          category: "Full-Stack Development",
+          abbr: "FSD",
+          value: 30
         },
         {
           category: "Natural Language Processing",
@@ -94,7 +94,7 @@ export default {
         // labels: [
         //   "Software Development",
         //   "Technical Consulting",
-        //   "Machine Learning",
+        //   "Full-Stack Development",
         //   "Natural Language Processing",
         // ],
         datasets: [
