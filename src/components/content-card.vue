@@ -1,18 +1,7 @@
 <template>
   <Card :key="cardIndex" class="content-card">
     <template #header>
-      <div v-if="cardHeaderTooltip" v-tooltip.top="getCardHeaderTooltip(cardHeaderTooltip)">
-        <a v-if="cardHeaderUrl" :href="cardHeaderUrl" target="_blank" rel="noopener">
-          <slot name="cardHeaderImage"></slot>
-        </a>
-        <slot v-else name="cardHeaderImage"></slot>
-      </div>
-      <div v-else>
-        <a v-if="cardHeaderUrl" :href="cardHeaderUrl" target="_blank" rel="noopener">
-          <slot name="cardHeaderImage"></slot>
-        </a>
-        <slot v-else name="cardHeaderImage"></slot>
-      </div>
+      <slot name="cardHeaderImage"></slot>
     </template>
     <template #title>
       <slot name="cardTitle"></slot>
@@ -38,14 +27,7 @@ export default {
     Card
   },
   props: {
-    cardIndex: Number,
-    cardHeaderUrl: String,
-    cardHeaderTooltip: String
-  },
-  methods: {
-    getCardHeaderTooltip(cardHeaderTooltip) {
-      return cardHeaderTooltip
-    }
+    cardIndex: Number
   }
 }
 </script>

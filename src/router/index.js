@@ -3,7 +3,8 @@ import Home from "@/views/Home.vue"
 import About from "@/views/About.vue"
 import Services from "@/views/Services.vue"
 import Clients from "@/views/Clients.vue"
-import Products from "@/views/Products.vue"
+import Products from "@/views/products/Products.vue"
+import Product from "@/views/products/Product.vue"
 import Contact from "@/views/Contact.vue"
 import PageNotFound from "@/views/PageNotFound.vue"
 
@@ -39,8 +40,13 @@ const routes = [
   },
   {
     path: "/products",
-    name: "Product",
+    name: "Products",
     component: Products
+  },
+  {
+    path: "/products/:key",
+    name: "Product",
+    component: Product
   },
   {
     path: "/contact",

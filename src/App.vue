@@ -736,6 +736,22 @@ body {
   color: var(--wren) !important;
 }
 
+.p-fieldset-legend > span > a {
+  color: var(--cactus-wren) !important;
+}
+
+.p-fieldset-legend:hover > span > a {
+  color: var(--toucan) !important;
+}
+
+.p-fieldset-legend.dark-mode > span > a {
+  color: var(--wren) !important;
+}
+
+.p-fieldset-legend.dark-mode:hover > span > a {
+  color: var(--red-hawk) !important;
+}
+
 .p-card {
   font-family: "Source Code Pro", Roboto, sans-serif !important;
   background: var(--cactus-wren) !important; /* cactus wren */
@@ -1071,6 +1087,22 @@ body {
   .p-fieldset-legend.light-mode {
     background: var(--wren) !important;
     color: var(--cactus-wren) !important;
+  }
+
+  .p-fieldset-legend > span > a {
+    color: var(--wren) !important;
+  }
+
+  .p-fieldset-legend:hover > span > a {
+    color: var(--red-hawk) !important;
+  }
+
+  .p-fieldset-legend.light-mode > span > a {
+    color: var(--cactus-wren) !important;
+  }
+
+  .p-fieldset-legend.light-mode:hover > span > a {
+    color: var(--toucan) !important;
   }
 
   .p-card {

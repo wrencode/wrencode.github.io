@@ -2,32 +2,34 @@
   <ContentCollection
     :content-collection-item-class="productClass"
     :content-collection-legend="productLegend"
-    :contents="products"
+    :content-collection-legend-route="productLegendRoute"
+    :contents="getProductFromRoute(products)"
   />
 </template>
 
 <script>
 import ContentCollection from "@/components/content-collection"
-import products from "../data/products.json"
+import products from "../../data/products.json"
 
 export default {
-  name: "Products",
+  name: "Product",
   components: {
     ContentCollection
   },
-  props: {
-    setMode: Function
-  },
   mounted() {
-    this.setMode()
     this.setProductItemWidth()
   },
   data: () => ({
     productClass: "product",
-    productLegend: "Products",
+    productLegend:
+      "<html lang='en'><a href='javascript:'><i class='pi pi-arrow-circle-left'>&nbsp;</i>Back to Products</a></html>",
+    productLegendRoute: "/products",
     products: products
   }),
   methods: {
+    getProductFromRoute(products) {
+      return products.filter((elem) => elem.key === this.$route.params.key)
+    },
     setProductItemWidth() {
       const numberOfProducts = Object.keys(products).length
       const maxProductsPerRow = Math.floor(window.innerWidth / 500)
@@ -42,6 +44,9 @@ export default {
       Array.from(document.getElementsByClassName("product-content-item")).forEach((elem) => {
         elem.style.maxWidth = `${productItemMaxWidth}px`
       })
+    },
+    clickInternal(internalRouteUrl) {
+      this.$router.push(internalRouteUrl)
     }
   }
 }

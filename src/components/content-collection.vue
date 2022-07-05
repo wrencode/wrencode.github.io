@@ -2,21 +2,91 @@
   <div class="p-grid">
     <div class="p-col">
       <Fieldset :toggleable="false" :collapsed="false">
-        <template #legend> {{ contentCollectionLegend }}</template>
+        <!--TODO: figure out how to update dynamic content collection legend with dark/light modes -->
+        <template #legend v-if="!contentCollectionLegend.includes('html')"> {{ contentCollectionLegend }}</template>
+        <template #legend v-else>
+          <span
+            v-if="contentCollectionLegend.includes('href')"
+            v-on:click="clickInternal(contentCollectionLegendRoute)"
+            v-html="contentCollectionLegend"
+          ></span>
+          <span v-else v-html="contentCollectionLegend"></span>
+        </template>
         <div class="content-cards">
           <ContentCard
             v-for="(content, index) in contents"
             :class="createContentClass(contentCollectionItemClass)"
             :key="content.key"
             :card-index="index"
-            :card-header-url="content.url"
-            :card-header-tooltip="content.tooltip"
           >
+            <!--TODO: figure out how to update dynamic content collection header SVG with dark/light modes -->
             <template v-slot:cardHeaderImage>
-              <component :is="content.headerComponent" />
+              <div
+                v-if="Object.prototype.hasOwnProperty.call(content, 'tooltip')"
+                v-tooltip.top="getCardHeaderTooltip(content.tooltip)"
+              >
+                <!--  <a-->
+                <!--    v-if="Object.prototype.hasOwnProperty.call(content, 'url') && !content.url.startsWith('/')"-->
+                <!--    v-bind:href="content.url"-->
+                <!--  >-->
+                <a
+                  v-if="Object.prototype.hasOwnProperty.call(content, 'url') && !content.url.startsWith('/')"
+                  :href="content.url"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <component :is="content.headerComponent" />
+                </a>
+                <a
+                  v-else-if="Object.prototype.hasOwnProperty.call(content, 'url') && content.url.startsWith('/')"
+                  v-on:click="clickInternal(content.url)"
+                  href="javascript:"
+                >
+                  <component :is="content.headerComponent" />
+                </a>
+                <component v-else :is="content.headerComponent" />
+              </div>
+              <div v-else>
+                <!--  <a-->
+                <!--    v-if="Object.prototype.hasOwnProperty.call(content, 'url') && !content.url.startsWith('/')"-->
+                <!--    v-bind:href="content.url"-->
+                <!--  >-->
+                <a
+                  v-if="Object.prototype.hasOwnProperty.call(content, 'url') && !content.url.startsWith('/')"
+                  :href="content.url"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <component :is="content.headerComponent" />
+                </a>
+                <a
+                  v-else-if="Object.prototype.hasOwnProperty.call(content, 'url') && content.url.startsWith('/')"
+                  v-on:click="clickInternal(content.url)"
+                  href="javascript:"
+                >
+                  <component :is="content.headerComponent" />
+                </a>
+                <component v-else :is="content.headerComponent" />
+              </div>
             </template>
             <template v-if="Object.prototype.hasOwnProperty.call(content, 'title')" v-slot:cardTitle>
-              <a v-if="Object.prototype.hasOwnProperty.call(content, 'url')" v-bind:href="content.url">
+              <!--  <a-->
+              <!--    v-if="Object.prototype.hasOwnProperty.call(content, 'url') && !content.url.startsWith('/')"-->
+              <!--    v-bind:href="content.url"-->
+              <!--  >-->
+              <a
+                v-if="Object.prototype.hasOwnProperty.call(content, 'url') && !content.url.startsWith('/')"
+                :href="content.url"
+                target="_blank"
+                rel="noopener"
+              >
+                {{ content.title }}
+              </a>
+              <a
+                v-else-if="Object.prototype.hasOwnProperty.call(content, 'url') && content.url.startsWith('/')"
+                v-on:click="clickInternal(content.url)"
+                href="javascript:"
+              >
                 {{ content.title }}
               </a>
               <span v-else>
@@ -26,12 +96,12 @@
             <template v-if="Object.prototype.hasOwnProperty.call(content, 'subtitle')" v-slot:cardSubtitle>
               {{ content.subtitle }}
               <div v-if="Object.prototype.hasOwnProperty.call(content, 'subtitleGitHubUrl')">
-                <a v-bind:href="content.subtitleGitHubUrl">
+                <a :href="content.subtitleGitHubUrl" target="_blank" rel="noopener">
                   {{ content.subtitleGitHubUrl }}
                 </a>
               </div>
             </template>
-            <template v-slot:cardContent>
+            <template v-if="Object.prototype.hasOwnProperty.call(content, 'about')" v-slot:cardContent>
               <div class="content-container">
                 <p :key="index" v-for="(paragraph, index) in content.about.description">
                   <i>{{ paragraph }}</i>
@@ -59,11 +129,11 @@
                   v-bind:class="`product-markdown language-` + content.markdown.prismProgrammingLanguage"
                   v-if="Object.prototype.hasOwnProperty.call(content, 'markdown')"
                   v-html="markdownToHtml(content.markdown.body)"
-                ></div>
+                />
               </div>
             </template>
             <template v-if="Object.prototype.hasOwnProperty.call(content, 'footerComponent')" v-slot:cardFooter>
-              <component :is="content.footerComponent" />
+              <component :is="content.footerComponent" :footer-component-content="content.footerComponentContent" />
             </template>
           </ContentCard>
         </div>
@@ -87,6 +157,7 @@ export default {
   },
   props: {
     contentCollectionLegend: String,
+    contentCollectionLegendRoute: String,
     contentCollectionItemClass: String,
     contents: {
       type: Object,
@@ -112,13 +183,15 @@ export default {
             prismProgrammingLanguage: String
           },
           footerComponentPath: String,
-          footerComponent: String
+          footerComponent: String,
+          footerComponentContent: Object
         }
       }
     }
   },
   created() {
     for (let content of this.contents) {
+      console.log(content)
       if (
         Object.prototype.hasOwnProperty.call(content, "headerComponent") &&
         Object.prototype.hasOwnProperty.call(content, "headerComponentPath")
@@ -146,16 +219,27 @@ export default {
     }
   },
   mounted() {
+    if (!this.contentCollectionLegend) {
+      Array.from(document.getElementsByClassName("p-fieldset-legend")).forEach((elem) => (elem.style.display = "none"))
+    }
+
     window.Prism = window.Prism || {}
     window.Prism.manual = true
     Prism.highlightAll()
   },
+  computed: {},
   methods: {
+    getCardHeaderTooltip(cardHeaderTooltip) {
+      return cardHeaderTooltip
+    },
     markdownToHtml(markdown) {
       return marked(markdown)
     },
     createContentClass(contentName) {
       return `${contentName.toString().toLowerCase()}-content-item`
+    },
+    clickInternal(internalRouteUrl) {
+      this.$router.push(internalRouteUrl)
     }
   }
 }
@@ -227,6 +311,30 @@ export default {
   color: #aac4e2;
 }
 
+.p-card-subtitle a {
+  color: var(--wren);
+}
+
+.p-card-subtitle a.dark-mode {
+  color: var(--cactus-wren);
+}
+
+.p-card-subtitle a:hover {
+  color: var(--red-hawk) !important;
+}
+
+.p-card-subtitle a.dark-mode:hover {
+  color: var(--toucan) !important;
+}
+
+.p-card-subtitle a:visited {
+  color: #4f859f;
+}
+
+.p-card-subtitle a.dark-mode:visited {
+  color: #aac4e2;
+}
+
 @media (prefers-color-scheme: dark) {
   .p-card-title > a {
     color: var(--cactus-wren);
@@ -249,6 +357,30 @@ export default {
   }
 
   .p-card-title > a.light-mode:visited {
+    color: #4f859f;
+  }
+
+  .p-card-subtitle a {
+    color: var(--cactus-wren);
+  }
+
+  .p-card-subtitle a.light-mode {
+    color: var(--wren);
+  }
+
+  .p-card-subtitle a:hover {
+    color: var(--toucan) !important;
+  }
+
+  .p-card-subtitle a.light-mode:hover {
+    color: var(--red-hawk) !important;
+  }
+
+  .p-card-subtitle a:visited {
+    color: #aac4e2;
+  }
+
+  .p-card-subtitle a.light-mode:visited {
     color: #4f859f;
   }
 }
