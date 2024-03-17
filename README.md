@@ -1,31 +1,44 @@
 # wrencode.github.io
 
+## About
 Home website for Wrencode, LLC.
 
-## Project setup
+## Development
+
+## Vue Configuration
+
+See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Yarn Commands
+
+#### Install Dependencies
 
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+#### Compile and Serve with Hot-Reloads Development
 
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
-
-```
-yarn build
-```
-
-### Lints and fixes files
+#### Lints and fixes files
 
 ```
 yarn lint
 ```
 
-### Customize configuration
+#### Compile and Minify for Production
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+yarn build
+```
+
+## Deployment
+
+1. Run `yarn lint`.
+2. Run `yarn build`.
+3. Run `git add .`.
+4. Run `git commit -m `
+

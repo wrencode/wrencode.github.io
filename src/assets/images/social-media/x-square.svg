@@ -1,0 +1,15 @@
+<svg
+    id="x-square"
+    class="x-square"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 512 509.64"
+    shape-rendering="geometricPrecision"
+    text-rendering="geometricPrecision"
+    image-rendering="optimizeQuality"
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+>
+    <path
+        d="m 323.74,148.35 h 36.12 l -78.91,90.2 92.83,122.73 h -72.69 l -56.93,-74.43 -65.15,74.43 h -36.14 l 84.4,-96.47 -89.05,-116.46 h 74.53 l 51.46,68.04 z m -12.68,191.31 h 20.02 L 201.88,168.84 H 180.4 Z M 115.61,0 H 396.39 C 460.43794,0 512,51.56206 512,115.61 v 278.42001 c 0,64.04794 -51.56206,115.61 -115.61,115.61 H 115.61 C 51.56206,509.64001 0,458.07795 0,394.03001 V 115.61 C 0,51.56206 51.56206,0 115.61,0 Z"
+    />
+</svg>

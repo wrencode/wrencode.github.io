@@ -50,7 +50,7 @@
   </Button>
   <footer class="footer">
     <WrencodeSocialMedia class="footer-social-media" />
-    <p>Copyright © {{ getYear() }} Wrencode, LLC. All rights reserved.</p>
+    <p>Copyright © 2021-{{ getYear() }} Wrencode, LLC. All rights reserved.</p>
     <Button
       class="p-button-rounded p-button-sm footer-surprise"
       label="konami?"
@@ -366,7 +366,9 @@ export default {
   --cactus-wren-transparency-50: rgba(171, 161, 140, 0.5);
   --cactus-wren-transparency-25: rgba(171, 161, 140, 0.25);
   --toucan: #f09651;
+  --toucan-transparency-50: rgba(240, 150, 81, 0.5);
   --red-hawk: #7e3227;
+  --red-hawk-transparency-50: rgba(126, 50, 39, 0.5);
   --midnight-blue: #191970;
   --sunshine-yellow: #fffd37;
   --font-size-largest: 22pt;
@@ -909,6 +911,14 @@ body {
   fill: var(--cactus-wren-transparency-50) !important;
 }
 
+.footer-social-media svg:hover {
+  fill: var(--red-hawk-transparency-50) !important;
+}
+
+.footer-social-media svg.dark-mode:hover {
+  fill: var(--toucan-transparency-50) !important;
+}
+
 .footer-surprise {
   text-align: right !important;
   float: right !important;
@@ -1221,14 +1231,22 @@ body {
     color: var(--wren-transparency-50) !important;
   }
 
-  .footer-social-media svg {
+  .footer-social-media svg use {
     fill: var(--cactus-wren-transparency-50) !important;
     width: 25px !important;
     height: 25px !important;
   }
 
-  .footer-social-media svg.light-mode {
+  .footer-social-media svg.light-mode use {
     fill: var(--wren-transparency-50) !important;
+  }
+
+  .footer-social-media svg:hover use {
+    fill: var(--toucan-transparency-50) !important;
+  }
+
+  .footer-social-media svg.light-mode:hover use {
+    fill: var(--red-hawk-transparency-50) !important;
   }
 
   .footer-surprise {
