@@ -40,5 +40,6 @@ yarn build
 1. Run `yarn lint`.
 2. Run `yarn build`.
 3. Run `git add .`.
-4. Run `git commit -m `
-
+4. Run `git commit -m "commit message goes here"`.
+5. Run `git push`.
+6. Check GitHub Pages for deployment status [here](https://github.com/wrencode/wrencode.github.io/settings/pages). 
